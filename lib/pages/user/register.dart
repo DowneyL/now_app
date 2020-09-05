@@ -1,8 +1,10 @@
-import "package:flutter/material.dart";
 import "dart:ui";
-import "../../ui/now_ui.dart";
+
+import "package:flutter/material.dart";
 import "package:provider/provider.dart";
+
 import "../../providers/user/theme.dart";
+import "../../ui/now_ui.dart";
 
 class RegisterPage extends StatefulWidget {
   static const routerName = "/register";
@@ -26,20 +28,17 @@ class _RegisterPageState extends State<RegisterPage> {
               buildRegisterContent(),
             ],
           ),
-          Container(
-            constraints: BoxConstraints(
-              maxHeight: 92.0,
-            ),
-            child: Center(
-              child: AppBar(
-                leading: Container(
-                  alignment: Alignment.bottomCenter,
-                  child: Icon(Icons.menu),
-                ),
-                elevation: 0,
-                backgroundColor: Color.fromRGBO(235, 83, 34, 1),
-              ),
-            ),
+          TopBar(
+            actions: <Widget>[
+              ImageIcon(AssetImage("assets/images/lines.png")),
+              ImageIcon(AssetImage("assets/images/lines.png")),
+              ImageIcon(AssetImage("assets/images/lines.png")),
+              ImageIcon(AssetImage("assets/images/lines.png")),
+              ImageIcon(AssetImage("assets/images/lines.png")),
+              ImageIcon(AssetImage("assets/images/lines.png")),
+              ImageIcon(AssetImage("assets/images/lines.png")),
+            ],
+            isGroup: true,
           ),
         ],
       ),
