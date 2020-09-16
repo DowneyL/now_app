@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "extension/double.dart";
 
 class SolidButton extends StatelessWidget {
   final double width;
@@ -23,11 +24,11 @@ class SolidButton extends StatelessWidget {
         child: RaisedButton(
           onPressed: onPressed,
           color: color,
-          padding: EdgeInsets.all(24.0),
+          padding: EdgeInsets.all(24.0.px),
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 18.0,
+              fontSize: 18.0.px,
               color: Colors.white,
               fontWeight: FontWeight.w400,
             ),
@@ -63,11 +64,11 @@ class HollowButton extends StatelessWidget {
       child: FlatButton(
         onPressed: onPressed,
         color: Colors.transparent,
-        padding: EdgeInsets.all(24.0),
+        padding: EdgeInsets.all(24.0.px),
         child: Text(
           text,
           style: TextStyle(
-            fontSize: 18.0,
+            fontSize: 18.0.px,
             color: Colors.white,
             fontWeight: FontWeight.w400,
           ),

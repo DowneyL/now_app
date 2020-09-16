@@ -1,5 +1,5 @@
 import "package:flutter/material.dart";
-
+import "extension/double.dart";
 import 'base.dart';
 
 class TopBar extends StatefulWidget {
@@ -62,8 +62,8 @@ class _TopBarState extends State<TopBar> {
 
     return Container(
       color: Color(0xFFF96332),
-      height: 100.0,
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+      height: 100.0.px,
+      padding: EdgeInsets.symmetric(horizontal: 20.0.px, vertical: 15.0.px),
       child: actions,
     );
   }
