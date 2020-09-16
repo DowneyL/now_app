@@ -14,6 +14,8 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  double width = 480.0.px;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,13 +59,13 @@ class _RegisterPageState extends State<RegisterPage> {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         buildTitle(),
-        SizedBox(height: 120),
+        SizedBox(height: 120.px),
         buildUsernameInput(),
-        SizedBox(height: 26),
+        SizedBox(height: 26.px),
         buildEmailInput(),
-        SizedBox(height: 26),
+        SizedBox(height: 26.px),
         buildPasswordInput(),
-        SizedBox(height: 84),
+        SizedBox(height: 84.px),
         buildContinueButton(),
         buildFooter(),
       ],
@@ -74,7 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Text(
       "CREATE ACCOUNT",
       style: TextStyle(
-        fontSize: 54,
+        fontSize: 54.px,
         fontWeight: FontWeight.w500,
         color: Colors.white,
       ),
@@ -82,77 +84,58 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget buildUsernameInput() {
-    return Consumer<UserThemeProvider>(
-      builder: (context, theme, child) {
-        return Input(
-          width: theme.inputWidth,
-          text: "Name",
-          icon: child,
-        );
-      },
-      child: Image.asset(
+    return Input(
+      width: width,
+      text: "Name",
+      icon: Image.asset(
         "assets/images/lines.png",
         color: Color.fromRGBO(255, 255, 255, .5),
-        width: 38.0,
+        width: 38.0.px,
       ),
     );
   }
 
   Widget buildEmailInput() {
-    return Consumer<UserThemeProvider>(
-      builder: (context, theme, child) {
-        return Input(
-          width: theme.inputWidth,
-          text: "Email",
-          icon: child,
-        );
-      },
-      child: Image.asset(
+    return Input(
+      width: width,
+      text: "Email",
+      icon: Image.asset(
         "assets/images/mail.png",
         color: Color.fromRGBO(255, 255, 255, .5),
-        width: 38.0,
+        width: 38.0.px,
       ),
     );
   }
 
   Widget buildPasswordInput() {
-    return Consumer<UserThemeProvider>(
-      builder: (context, theme, child) {
-        return Input(
-          width: theme.inputWidth,
-          text: "Password",
-          obscureText: true,
-          icon: child,
-        );
-      },
-      child: Image.asset(
+    return Input(
+      width: width,
+      text: "Password",
+      obscureText: true,
+      icon: Image.asset(
         "assets/images/lock.png",
         color: Color.fromRGBO(255, 255, 255, .5),
-        height: 44.0,
-        width: 42.0,
+        height: 44.0.px,
+        width: 42.0.px,
       ),
     );
   }
 
   Widget buildContinueButton() {
-    return Consumer<UserThemeProvider>(
-      builder: (context, theme, child) {
-        return HollowButton(
-          width: theme.inputWidth,
-          text: "Continue",
-          onPressed: () => print("continue on pressed"),
-        );
-      },
+    return HollowButton(
+      width: width,
+      text: "Continue",
+      onPressed: () => print("continue on pressed"),
     );
   }
 
   Widget buildFooter() {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 20.0),
+      padding: EdgeInsets.symmetric(vertical: 20.0.px),
       child: Text(
         "Terms & Conditions",
         style: TextStyle(
-          fontSize: 16.0,
+          fontSize: 16.0.px,
           color: Colors.white,
         ),
       ),

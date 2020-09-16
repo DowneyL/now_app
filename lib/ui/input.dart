@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "extension/double.dart";
 
 class Input extends StatelessWidget {
   final String text;
@@ -17,12 +18,12 @@ class Input extends StatelessWidget {
     EdgeInsetsGeometry padding,
   })  : width = width ?? double.infinity,
         obscureText = obscureText ?? false,
-        padding =
-            padding ?? EdgeInsets.symmetric(horizontal: 36.0, vertical: 14.0);
+        padding = padding ??
+            EdgeInsets.symmetric(horizontal: 36.0.px, vertical: 14.0.px);
 
   final TextStyle textStyle = TextStyle(
     color: Colors.white,
-    fontSize: 18.0,
+    fontSize: 18.0.px,
     fontWeight: FontWeight.w500,
   );
 
@@ -50,7 +51,7 @@ class Input extends StatelessWidget {
             hintText: text,
             hintStyle: textStyle,
             icon: icon,
-            contentPadding: const EdgeInsets.symmetric(horizontal: 12.0),
+            contentPadding: EdgeInsets.symmetric(horizontal: 12.0.px),
             border: InputBorder.none,
           ),
         ),

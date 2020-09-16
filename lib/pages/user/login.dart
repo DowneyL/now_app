@@ -9,7 +9,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  double width = 480.0;
+  double width = 480.0.px;
 
   @override
   Widget build(BuildContext context) {
@@ -35,18 +35,18 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget buildLoginContent() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 50),
+      padding: EdgeInsets.symmetric(horizontal: 50.px),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           buildLogo(),
-          SizedBox(height: 120),
+          SizedBox(height: 120.px),
           buildUsernameInput(),
-          SizedBox(height: 26),
+          SizedBox(height: 26.px),
           buildPasswordInput(),
-          SizedBox(height: 60),
+          SizedBox(height: 60.px),
           buildLoginButton(),
-          SizedBox(height: 32),
+          SizedBox(height: 32.px),
           buildFooter(),
         ],
       ),
@@ -67,8 +67,8 @@ class _LoginPageState extends State<LoginPage> {
       icon: Image.asset(
         "assets/images/person_circle.png",
         color: Color.fromRGBO(255, 255, 255, .5),
-        width: 38,
-        height: 38,
+        width: 38.px,
+        height: 38.px,
       ),
     );
   }
@@ -80,8 +80,8 @@ class _LoginPageState extends State<LoginPage> {
       icon: Image.asset(
         "assets/images/lock.png",
         color: Color.fromRGBO(255, 255, 255, .5),
-        width: 42,
-        height: 44,
+        width: 42.px,
+        height: 44.px,
       ),
       obscureText: true,
     );
@@ -99,7 +99,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget buildFooter() {
     TextStyle textStyle = TextStyle(
       color: Colors.white,
-      fontSize: 16.0,
+      fontSize: 16.0.px,
       fontWeight: FontWeight.w400,
     );
     return Container(
