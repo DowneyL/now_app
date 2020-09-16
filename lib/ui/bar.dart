@@ -16,12 +16,6 @@ class TopBar extends StatefulWidget {
 class _TopBarState extends State<TopBar> {
   @override
   Widget build(BuildContext context) {
-    IconThemeData actionsThemeData = widget.actionsThemeData ??
-        IconThemeData(
-          color: Colors.white,
-          size: 34.0,
-        );
-
     Widget actions;
 
     if (widget.isGroup == true && widget.actions.length > 3) {
@@ -30,15 +24,27 @@ class _TopBarState extends State<TopBar> {
       widget.actions.removeAt(0);
       widget.actions.removeAt(1);
       var others = widget.actions;
-      actions = Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.end,
+      actions = Stack(
+        fit: StackFit.expand,
         children: <Widget>[
-          leading,
-          title,
-          SpaceRow(
-            space: 5,
-            children: others,
+          Stack(
+            children: [leading],
+            alignment: AlignmentDirectional.bottomStart,
+          ),
+          Stack(
+            children: [title],
+            alignment: AlignmentDirectional.bottomCenter,
+          ),
+          Stack(
+            children: [
+              SpaceRow(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.end,
+                space: 5,
+                children: others,
+              )
+            ],
+            alignment: AlignmentDirectional.bottomEnd,
           ),
         ],
       );
@@ -50,12 +56,14 @@ class _TopBarState extends State<TopBar> {
       );
     }
 
-    actions = IconTheme.merge(data: actionsThemeData, child: actions);
+    if (widget.actionsThemeData != null) {
+      actions = IconTheme.merge(data: widget.actionsThemeData, child: actions);
+    }
 
     return Container(
-      color: Color.fromRGBO(235, 83, 34, 1),
+      color: Color(0xFFF96332),
       height: 100.0,
-      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
       child: actions,
     );
   }

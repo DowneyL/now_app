@@ -24,9 +24,8 @@ class SpaceRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var count = children.length;
     List<Widget> spacedChildren = <Widget>[];
-    if (count > 1) {
+    if (children.length > 1) {
       for (var child in children) {
         spacedChildren.add(child);
         spacedChildren.add(SizedBox(width: space));

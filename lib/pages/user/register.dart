@@ -30,15 +30,14 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
           TopBar(
             actions: <Widget>[
-              ImageIcon(AssetImage("assets/images/lines.png")),
-              ImageIcon(AssetImage("assets/images/lines.png")),
-              ImageIcon(AssetImage("assets/images/lines.png")),
-              ImageIcon(AssetImage("assets/images/lines.png")),
-              ImageIcon(AssetImage("assets/images/lines.png")),
-              ImageIcon(AssetImage("assets/images/lines.png")),
-              ImageIcon(AssetImage("assets/images/lines.png")),
+              ImageIcon(AssetImage("assets/images/menu.png")),
+              ImageIcon(AssetImage("assets/images/logo.png")),
+              ImageIcon(AssetImage("assets/images/cancel.png")),
             ],
             isGroup: true,
+            actionsThemeData: IconThemeData(
+              color: Colors.white,
+            ),
           ),
         ],
       ),
