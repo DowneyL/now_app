@@ -1,9 +1,8 @@
 import "dart:ui";
 
 import "package:flutter/material.dart";
-import "package:provider/provider.dart";
+import 'package:now_app/theme/now_theme.dart';
 
-import "../../providers/user/theme.dart";
 import "../../ui/now_ui.dart";
 
 class RegisterPage extends StatefulWidget {
@@ -14,19 +13,18 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  double width = 480.0.px;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: <Widget>[
           Stack(
             alignment: AlignmentDirectional.center,
             fit: StackFit.expand,
             children: <Widget>[
-              buildMask(),
-              buildBackground(),
+              Mask(),
+              ImageBackground("assets/images/bg.png"),
               buildRegisterContent(),
             ],
           ),
@@ -37,55 +35,43 @@ class _RegisterPageState extends State<RegisterPage> {
               ImageIcon(AssetImage("assets/images/cancel.png")),
             ],
             isGroup: true,
-            actionsThemeData: IconThemeData(
-              color: Colors.white,
-            ),
+            actionsThemeData: IconThemeData(color: Colors.white),
           ),
         ],
       ),
     );
   }
 
-  Widget buildBackground() {
-    return ImageBackground("assets/images/bg.png");
-  }
-
-  Widget buildMask() {
-    return Mask();
-  }
-
   Widget buildRegisterContent() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        buildTitle(),
-        SizedBox(height: 120.px),
-        buildUsernameInput(),
-        SizedBox(height: 26.px),
-        buildEmailInput(),
-        SizedBox(height: 26.px),
-        buildPasswordInput(),
-        SizedBox(height: 84.px),
-        buildContinueButton(),
-        buildFooter(),
-      ],
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 150.px),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          buildTitle(),
+          SizedBox(height: 120.px),
+          buildUsernameInput(),
+          SizedBox(height: 26.px),
+          buildEmailInput(),
+          SizedBox(height: 26.px),
+          buildPasswordInput(),
+          SizedBox(height: 84.px),
+          buildContinueButton(),
+          buildFooter(),
+        ],
+      ),
     );
   }
 
   Widget buildTitle() {
     return Text(
       "CREATE ACCOUNT",
-      style: TextStyle(
-        fontSize: 54.px,
-        fontWeight: FontWeight.w500,
-        color: Colors.white,
-      ),
+      style: NowTheme.textTheme().headline3,
     );
   }
 
   Widget buildUsernameInput() {
     return Input(
-      width: width,
       text: "Name",
       icon: Image.asset(
         "assets/images/lines.png",
@@ -97,7 +83,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget buildEmailInput() {
     return Input(
-      width: width,
       text: "Email",
       icon: Image.asset(
         "assets/images/mail.png",
@@ -109,7 +94,6 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Widget buildPasswordInput() {
     return Input(
-      width: width,
       text: "Password",
       obscureText: true,
       icon: Image.asset(
@@ -122,8 +106,7 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget buildContinueButton() {
-    return HollowButton(
-      width: width,
+    return HollowRoundedButton(
       text: "Continue",
       onPressed: () => print("continue on pressed"),
     );
@@ -134,10 +117,7 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: EdgeInsets.symmetric(vertical: 20.0.px),
       child: Text(
         "Terms & Conditions",
-        style: TextStyle(
-          fontSize: 16.0.px,
-          color: Colors.white,
-        ),
+        style: NowTheme.textTheme().bodyText2,
       ),
     );
   }

@@ -1,6 +1,7 @@
 import "package:flutter/material.dart";
-import "extension/double.dart";
+
 import 'base.dart';
+import "extension/double.dart";
 
 class TopBar extends StatefulWidget {
   final List<Widget> actions;
@@ -37,10 +38,10 @@ class _TopBarState extends State<TopBar> {
           ),
           Stack(
             children: [
-              SpaceRow(
+              SpacedRow(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.end,
-                space: 5,
+                space: 5.0.px,
                 children: others,
               )
             ],

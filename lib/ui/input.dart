@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:now_app/theme/now_theme.dart';
+
 import "extension/double.dart";
 
 class Input extends StatelessWidget {
@@ -21,11 +23,7 @@ class Input extends StatelessWidget {
         padding = padding ??
             EdgeInsets.symmetric(horizontal: 36.0.px, vertical: 14.0.px);
 
-  final TextStyle textStyle = TextStyle(
-    color: Colors.white,
-    fontSize: 18.0.px,
-    fontWeight: FontWeight.w500,
-  );
+  final TextStyle textStyle = NowTheme.textTheme().bodyText1;
 
   @override
   Widget build(BuildContext context) {

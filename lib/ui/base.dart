@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class SpaceRow extends StatelessWidget {
+class SpacedRow extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final double space;
   final MainAxisSize mainAxisSize;
@@ -10,7 +10,7 @@ class SpaceRow extends StatelessWidget {
   final TextBaseline textBaseline;
   final List<Widget> children;
 
-  SpaceRow({
+  SpacedRow({
     Key key,
     this.mainAxisAlignment = MainAxisAlignment.start,
     this.mainAxisSize = MainAxisSize.max,

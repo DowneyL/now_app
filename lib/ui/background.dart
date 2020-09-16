@@ -1,14 +1,11 @@
 import "package:flutter/material.dart";
+import 'package:now_app/theme/now_theme.dart';
 
 class Mask extends StatelessWidget {
   final List<Color> colors;
 
   Mask({List<Color> colors})
-      : this.colors = colors ??
-            [
-              Color.fromRGBO(235, 83, 34, 1),
-              Color.fromRGBO(0, 0, 0, 1),
-            ];
+      : this.colors = colors ?? [NowTheme.orange.shade500, Colors.black];
 
   @override
   Widget build(BuildContext context) {
