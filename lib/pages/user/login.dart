@@ -1,5 +1,6 @@
 import "package:flutter/material.dart";
-import "../../ui/now_ui.dart";
+import 'package:now_app/theme/now_theme.dart';
+import "package:now_app/ui/now_ui.dart";
 
 class LoginPage extends StatefulWidget {
   static const routeName = "/login";
@@ -9,33 +10,24 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  double width = 480.0.px;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
-          buildMask(),
-          buildBackground(),
-          buildLoginContent(),
+          Mask(),
+          ImageBackground("assets/images/bg.png"),
+          _buildLoginContent(),
         ],
       ),
     );
   }
 
-  Widget buildBackground() {
-    return ImageBackground("assets/images/bg.png");
-  }
-
-  Widget buildMask() {
-    return Mask();
-  }
-
-  Widget buildLoginContent() {
+  Widget _buildLoginContent() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 50.px),
+      padding: EdgeInsets.symmetric(horizontal: 150.px),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -62,7 +54,6 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget buildUsernameInput() {
     return Input(
-      width: width,
       text: "Username",
       icon: Image.asset(
         "assets/images/person_circle.png",
@@ -75,7 +66,6 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget buildPasswordInput() {
     return Input(
-      width: width,
       text: "Password",
       icon: Image.asset(
         "assets/images/lock.png",
@@ -88,39 +78,25 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget buildLoginButton() {
-    return SolidButton(
-      width: width,
+    return SolidRoundedButton(
       text: "Get Started",
-      color: Color(0xFFF96332),
+      color: NowTheme.orange,
       onPressed: () => print("on pressed"),
     );
   }
 
   Widget buildFooter() {
-    TextStyle textStyle = TextStyle(
-      color: Colors.white,
-      fontSize: 16.0.px,
-      fontWeight: FontWeight.w400,
-    );
     return Container(
-      width: width,
-      padding: EdgeInsets.symmetric(horizontal: 5.0),
+      padding: EdgeInsets.symmetric(horizontal: 5.0.px),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[
           GestureDetector(
-            onTap: () {
-              Navigator.of(context).pushNamed("/register");
-            },
-            child: Text(
-              "Create Account",
-              style: textStyle,
-            ),
+            onTap: () => Navigator.of(context).pushNamed("/register"),
+            child:
+                Text("Create Account", style: NowTheme.textTheme().bodyText2),
           ),
-          Text(
-            "Need Help?",
-            style: textStyle,
-          ),
+          Text("Need Help?", style: NowTheme.textTheme().bodyText2),
         ],
       ),
     );

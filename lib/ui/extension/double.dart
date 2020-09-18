@@ -2,10 +2,10 @@ import '../screen.dart';
 
 extension DoubleFit on double {
   double get rpx {
-    return this * Screen.rpx;
+    return this * Window.rpx;
   }
 
   double get px {
-    return this * Screen.px;
+    return this * Window.px;
   }
 }

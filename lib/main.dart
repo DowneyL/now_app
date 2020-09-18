@@ -1,8 +1,10 @@
 import "package:flutter/material.dart";
 import "package:provider/provider.dart";
+
 import "providers/loader.dart";
 import "routes.dart";
-import "ui/now_ui.dart" show Screen;
+import 'theme/now_theme.dart';
+import "ui/now_ui.dart" show Window;
 
 main() {
   runApp(MultiProvider(
@@ -14,9 +16,10 @@ main() {
 class NowApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Screen.init();
+    Window.init();
     return MaterialApp(
-      theme: ThemeData(fontFamily: "Montserrat"),
+      theme: NowTheme.light(),
+      darkTheme: NowTheme.dark(),
       debugShowCheckedModeBanner: false,
       routes: Routers.routes,
       initialRoute: Routers.initialRoute,

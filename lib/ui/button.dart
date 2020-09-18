@@ -1,13 +1,15 @@
 import "package:flutter/material.dart";
+import 'package:now_app/theme/now_theme.dart';
+
 import "extension/double.dart";
 
-class SolidButton extends StatelessWidget {
+class SolidRoundedButton extends StatelessWidget {
   final double width;
   final String text;
   final Color color;
   final VoidCallback onPressed;
 
-  SolidButton({
+  SolidRoundedButton({
     @required this.onPressed,
     double width,
     String text,
@@ -25,26 +27,19 @@ class SolidButton extends StatelessWidget {
           onPressed: onPressed,
           color: color,
           padding: EdgeInsets.all(24.0.px),
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 18.0.px,
-              color: Colors.white,
-              fontWeight: FontWeight.w400,
-            ),
-          ),
+          child: Text(text, style: NowTheme.textTheme().button),
         ),
       ),
     );
   }
 }
 
-class HollowButton extends StatelessWidget {
+class HollowRoundedButton extends StatelessWidget {
   final double width;
   final String text;
   final VoidCallback onPressed;
 
-  HollowButton({
+  HollowRoundedButton({
     @required this.onPressed,
     double width,
     String text,
@@ -65,14 +60,7 @@ class HollowButton extends StatelessWidget {
         onPressed: onPressed,
         color: Colors.transparent,
         padding: EdgeInsets.all(24.0.px),
-        child: Text(
-          text,
-          style: TextStyle(
-            fontSize: 18.0.px,
-            color: Colors.white,
-            fontWeight: FontWeight.w400,
-          ),
-        ),
+        child: Text(text, style: NowTheme.textTheme().button),
       ),
     );
   }
