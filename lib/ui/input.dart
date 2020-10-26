@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import 'package:flutter/rendering.dart';
 import 'package:now_app/theme/now_theme.dart';
 
 import "extension/double.dart";
@@ -21,9 +22,11 @@ class Input extends StatelessWidget {
   })  : width = width ?? double.infinity,
         obscureText = obscureText ?? false,
         padding = padding ??
-            EdgeInsets.symmetric(horizontal: 36.0.px, vertical: 14.0.px);
+            EdgeInsets.symmetric(horizontal: 36.0.px, vertical: 10.0.px);
 
-  final TextStyle textStyle = NowTheme.textTheme().bodyText1;
+  final TextStyle textStyle = NowTheme.textTheme()
+      .bodyText1
+      .merge(TextStyle(fontWeight: FontWeight.w500));
 
   @override
   Widget build(BuildContext context) {

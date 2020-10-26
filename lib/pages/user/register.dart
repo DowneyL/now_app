@@ -1,4 +1,4 @@
-import "dart:ui";
+import 'dart:ui';
 
 import "package:flutter/material.dart";
 import 'package:now_app/theme/now_theme.dart';
@@ -23,19 +23,38 @@ class _RegisterPageState extends State<RegisterPage> {
             alignment: AlignmentDirectional.center,
             fit: StackFit.expand,
             children: <Widget>[
-              Mask(),
               ImageBackground("assets/images/bg.png"),
+              FrostedGlassMask(),
               buildRegisterContent(),
             ],
           ),
           TopBar(
             actions: <Widget>[
-              ImageIcon(AssetImage("assets/images/menu.png")),
-              ImageIcon(AssetImage("assets/images/logo.png")),
-              ImageIcon(AssetImage("assets/images/cancel.png")),
+              Container(
+                width: 26.px,
+                height: 26.px,
+                child: SvgPicture.asset(
+                  "assets/images/menu.svg",
+                ),
+              ),
+              Container(
+                width: 22.px,
+                height: 23.px,
+                child: SvgPicture.asset(
+                  "assets/images/logo.svg",
+                ),
+              ),
+              GestureDetector(
+                onTap: () => Navigator.pop(context),
+                child: Container(
+                  width: 26.px,
+                  height: 26.px,
+                  child: SvgPicture.asset(
+                    "assets/images/cancel.svg",
+                  ),
+                ),
+              ),
             ],
-            isGroup: true,
-            actionsThemeData: IconThemeData(color: Colors.white),
           ),
         ],
       ),
@@ -43,23 +62,28 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Widget buildRegisterContent() {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 150.px),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: <Widget>[
-          buildTitle(),
-          SizedBox(height: 120.px),
-          buildUsernameInput(),
-          SizedBox(height: 26.px),
-          buildEmailInput(),
-          SizedBox(height: 26.px),
-          buildPasswordInput(),
-          SizedBox(height: 84.px),
-          buildContinueButton(),
-          buildFooter(),
-        ],
-      ),
+    return Column(
+      children: [
+        SizedBox(height: 200.px),
+        buildTitle(),
+        SizedBox(height: 120.px),
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 180.px),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              buildUsernameInput(),
+              SizedBox(height: 26.px),
+              buildEmailInput(),
+              SizedBox(height: 26.px),
+              buildPasswordInput(),
+              SizedBox(height: 84.px),
+              buildContinueButton(),
+              buildFooter(),
+            ],
+          ),
+        ),
+      ],
     );
   }
 
@@ -73,10 +97,9 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget buildUsernameInput() {
     return Input(
       text: "Name",
-      icon: Image.asset(
-        "assets/images/lines.png",
-        color: Color.fromRGBO(255, 255, 255, .5),
-        width: 38.0.px,
+      icon: SvgPicture.asset(
+        "assets/images/lines.svg",
+        height: 38.0.px,
       ),
     );
   }
@@ -84,10 +107,9 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget buildEmailInput() {
     return Input(
       text: "Email",
-      icon: Image.asset(
-        "assets/images/mail.png",
-        color: Color.fromRGBO(255, 255, 255, .5),
-        width: 38.0.px,
+      icon: SvgPicture.asset(
+        "assets/images/mail.svg",
+        height: 38.0.px,
       ),
     );
   }
@@ -96,11 +118,12 @@ class _RegisterPageState extends State<RegisterPage> {
     return Input(
       text: "Password",
       obscureText: true,
-      icon: Image.asset(
-        "assets/images/lock.png",
-        color: Color.fromRGBO(255, 255, 255, .5),
-        height: 44.0.px,
-        width: 42.0.px,
+      icon: Padding(
+        padding: const EdgeInsets.only(left: 8.0, right: 2.0),
+        child: SvgPicture.asset(
+          "assets/images/lock.svg",
+          height: 38.0.px,
+        ),
       ),
     );
   }
@@ -117,7 +140,9 @@ class _RegisterPageState extends State<RegisterPage> {
       padding: EdgeInsets.symmetric(vertical: 20.0.px),
       child: Text(
         "Terms & Conditions",
-        style: NowTheme.textTheme().bodyText2,
+        style: NowTheme.textTheme()
+            .bodyText2
+            .merge(TextStyle(color: Colors.white54)),
       ),
     );
   }

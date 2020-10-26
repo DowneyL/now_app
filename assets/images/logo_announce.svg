@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="228px" height="313px" viewBox="0 0 228 313" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Mark</title>
+    <defs>
+        <linearGradient x1="50%" y1="47.7584135%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.3" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="106" y="6" width="30" height="130" rx="15"></rect>
+        <rect id="path-3" x="6" y="6" width="30" height="130" rx="15"></rect>
+    </defs>
+    <g id="Tablet" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-Login" transform="translate(-654.000000, -393.000000)">
+            <g id="Mark" transform="translate(661.000000, 399.500000)">
+                <g id="Shape" transform="translate(36.000000, 163.000000)">
+                    <g transform="translate(121.000000, 71.000000) rotate(-180.000000) translate(-121.000000, -71.000000) ">
+                        <use fill="#FFFFFF" xlink:href="#path-2"></use>
+                        <use fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                    </g>
+                    <g>
+                        <use fill="#FFFFFF" xlink:href="#path-3"></use>
+                        <use fill="url(#linearGradient-1)" xlink:href="#path-3"></use>
+                    </g>
+                    <rect fill="#FFFFFF" transform="translate(71.175144, 71.324856) rotate(-225.000000) translate(-71.175144, -71.324856) " x="56.1751442" y="-14.1751442" width="30" height="171" rx="15"></rect>
+                </g>
+                <path d="M157,83 C101.771525,83 57,127.771525 57,183" id="Shape" stroke="#FFFFFF" stroke-width="10" opacity="0.4" stroke-linecap="round" transform="translate(107.000000, 133.000000) rotate(-315.000000) translate(-107.000000, -133.000000) "></path>
+                <path d="M182,32 C99.1572875,32 32,99.1572875 32,182" id="Shape" stroke="#FFFFFF" stroke-width="10" opacity="0.2" stroke-linecap="round" transform="translate(107.000000, 107.000000) rotate(-315.000000) translate(-107.000000, -107.000000) "></path>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="45px" height="45px" viewBox="0 0 45 45" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Mark</title>
+    <defs>
+        <linearGradient x1="50%" y1="47.7584135%" x2="50%" y2="0%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.3" offset="100%"></stop>
+        </linearGradient>
+        <path d="M43,38.2853464 C43,41.0327717 40.7558048,43.26 38,43.26 L38,43.26 C35.2385763,43.26 33,41.0386806 33,38.2853464 L33,5.2346536 C33,2.48722828 35.2441952,0.26 38,0.26 L38,0.26 C40.7614237,0.26 43,2.48131942 43,5.2346536 L43,38.2853464 L43,38.2853464 Z" id="path-2"></path>
+        <linearGradient x1="50%" y1="47.7584135%" x2="50%" y2="0%" id="linearGradient-3">
+            <stop stop-color="#FFFFFF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.3" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-4" x="0" y="0.26" width="10" height="43" rx="5"></rect>
+    </defs>
+    <g id="Tablet" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-Sign-Up" transform="translate(-745.000000, -59.000000)">
+            <g id="Mark" transform="translate(746.000000, 60.000000)">
+                <g id="Shape" transform="translate(37.928571, 21.510357) rotate(-180.000000) translate(-37.928571, -21.510357) ">
+                    <use fill="#FFFFFF" xlink:href="#path-2"></use>
+                    <use fill="url(#linearGradient-1)" xlink:href="#path-2"></use>
+                </g>
+                <g id="Shape">
+                    <use fill="#FFFFFF" xlink:href="#path-4"></use>
+                    <use fill="url(#linearGradient-3)" xlink:href="#path-4"></use>
+                </g>
+                <path d="M42,34.26 C43.4861511,35.8621609 43.4848482,38.9440223 42,41.26 L42,41.26 C39.6041152,42.7338783 36.4578456,42.7367006 35,41.26 L1,8.26 C-0.486151063,6.65783908 -0.48484821,3.57597774 1,1.26 L1,1.26 C3.39588476,-0.213878265 6.54215438,-0.216700584 8,1.26 L42,34.26 L42,34.26 Z" id="Shape" fill="#FFFFFF"></path>
+            </g>
+        </g>
+    </g>
+</svg>

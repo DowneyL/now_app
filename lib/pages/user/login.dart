@@ -3,7 +3,7 @@ import 'package:now_app/theme/now_theme.dart';
 import "package:now_app/ui/now_ui.dart";
 
 class LoginPage extends StatefulWidget {
-  static const routeName = "/login";
+  static const routerName = "/login";
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -27,12 +27,12 @@ class _LoginPageState extends State<LoginPage> {
 
   Widget _buildLoginContent() {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 150.px),
+      padding: EdgeInsets.symmetric(horizontal: 180.px),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           buildLogo(),
-          SizedBox(height: 120.px),
+          SizedBox(height: 130.px),
           buildUsernameInput(),
           SizedBox(height: 26.px),
           buildPasswordInput(),
@@ -46,32 +46,30 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Widget buildLogo() {
-    return Image.asset(
-      "assets/images/logo_announce.png",
-      scale: 1.6,
+    return SvgPicture.asset(
+      "assets/images/logo_announce.svg",
+      width: 100.px,
     );
   }
 
   Widget buildUsernameInput() {
     return Input(
-      text: "Username",
-      icon: Image.asset(
-        "assets/images/person_circle.png",
-        color: Color.fromRGBO(255, 255, 255, .5),
-        width: 38.px,
-        height: 38.px,
-      ),
-    );
+        text: "Username",
+        icon: SvgPicture.asset(
+          "assets/images/person_circle.svg",
+          height: 38.px,
+        ));
   }
 
   Widget buildPasswordInput() {
     return Input(
       text: "Password",
-      icon: Image.asset(
-        "assets/images/lock.png",
-        color: Color.fromRGBO(255, 255, 255, .5),
-        width: 42.px,
-        height: 44.px,
+      icon: Padding(
+        padding: const EdgeInsets.only(left: 8.0, right: 2.0),
+        child: SvgPicture.asset(
+          "assets/images/lock.svg",
+          height: 38.px,
+        ),
       ),
       obscureText: true,
     );
@@ -93,10 +91,15 @@ class _LoginPageState extends State<LoginPage> {
         children: <Widget>[
           GestureDetector(
             onTap: () => Navigator.of(context).pushNamed("/register"),
-            child:
-                Text("Create Account", style: NowTheme.textTheme().bodyText2),
+            child: Text("Create Account",
+                style: NowTheme.textTheme()
+                    .bodyText2
+                    .merge(TextStyle(color: Colors.white54))),
           ),
-          Text("Need Help?", style: NowTheme.textTheme().bodyText2),
+          Text("Need Help?",
+              style: NowTheme.textTheme()
+                  .bodyText2
+                  .merge(TextStyle(color: Colors.white54))),
         ],
       ),
     );

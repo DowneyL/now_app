@@ -1,4 +1,6 @@
 import "package:flutter/material.dart";
+import 'package:now_app/theme/now_theme.dart';
+import 'package:now_app/ui/now_ui.dart';
 
 import 'base.dart';
 import "extension/double.dart";
@@ -57,14 +59,10 @@ class _TopBarState extends State<TopBar> {
       );
     }
 
-    if (widget.actionsThemeData != null) {
-      actions = IconTheme.merge(data: widget.actionsThemeData, child: actions);
-    }
-
     return Container(
-      color: Color(0xFFF96332),
-      height: 100.0.px,
-      padding: EdgeInsets.symmetric(horizontal: 20.0.px, vertical: 15.0.px),
+      color: NowTheme.orange,
+      height: 70.0.px,
+      padding: EdgeInsets.symmetric(horizontal: 20.0.px, vertical: 10.0.px),
       child: actions,
     );
   }

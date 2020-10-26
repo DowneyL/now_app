@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import "package:flutter/material.dart";
 import 'package:now_app/theme/now_theme.dart';
 
@@ -5,7 +7,11 @@ class Mask extends StatelessWidget {
   final List<Color> colors;
 
   Mask({List<Color> colors})
-      : this.colors = colors ?? [NowTheme.orange.shade500, Colors.black];
+      : this.colors = colors ??
+            [
+              NowTheme.orange.shade600,
+              Colors.black,
+            ];
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +27,35 @@ class Mask extends StatelessWidget {
   }
 }
 
+class FrostedGlassMask extends StatelessWidget {
+  final List<Color> colors;
+
+  FrostedGlassMask({List<Color> colors})
+      : this.colors = colors ??
+            [
+              NowTheme.orange.shade600.withOpacity(.8),
+              Colors.black.withOpacity(.8),
+            ];
+
+  @override
+  Widget build(BuildContext context) {
+    return ClipRect(
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 8.0, sigmaY: 8.0),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: colors,
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class ImageBackground extends StatelessWidget {
   final String url;
 
@@ -28,9 +63,12 @@ class ImageBackground extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Image.asset(
-      url,
-      fit: BoxFit.cover,
+    return ConstrainedBox(
+      constraints: BoxConstraints.expand(),
+      child: Image.asset(
+        url,
+        fit: BoxFit.cover,
+      ),
     );
   }
 }

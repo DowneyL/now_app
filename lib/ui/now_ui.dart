@@ -11,3 +11,6 @@ export "screen.dart";
 // extension
 export "extension/double.dart";
 export "extension/int.dart";
+
+// svg
+export 'package:flutter_svg/flutter_svg.dart';
