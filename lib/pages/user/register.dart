@@ -17,6 +17,20 @@ class _RegisterPageState extends State<RegisterPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       resizeToAvoidBottomInset: false,
+      appBar: TopBar(
+        leaders: <Widget>[
+          SvgIconButton.asset(
+            "assets/images/menu.svg",
+            onPressed: () => print("test1"),
+          ),
+        ],
+        actions: <Widget>[
+          SvgIconButton.asset(
+            "assets/images/cancel.svg",
+            onPressed: () => print("test2"),
+          ),
+        ],
+      ),
       body: Stack(
         children: <Widget>[
           Stack(
@@ -26,34 +40,6 @@ class _RegisterPageState extends State<RegisterPage> {
               ImageBackground("assets/images/bg.png"),
               FrostedGlassMask(),
               buildRegisterContent(),
-            ],
-          ),
-          TopBar(
-            actions: <Widget>[
-              Container(
-                width: 26.px,
-                height: 26.px,
-                child: SvgPicture.asset(
-                  "assets/images/menu.svg",
-                ),
-              ),
-              Container(
-                width: 22.px,
-                height: 23.px,
-                child: SvgPicture.asset(
-                  "assets/images/logo.svg",
-                ),
-              ),
-              GestureDetector(
-                onTap: () => Navigator.pop(context),
-                child: Container(
-                  width: 26.px,
-                  height: 26.px,
-                  child: SvgPicture.asset(
-                    "assets/images/cancel.svg",
-                  ),
-                ),
-              ),
             ],
           ),
         ],
