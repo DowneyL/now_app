@@ -82,7 +82,7 @@ class _TopBarState extends State<TopBar> {
   static const Color _defaultShadowColor = Color(0xFF000000);
 
   Widget _closeButton(BuildContext context) {
-    return SvgIconButton.asset(
+    return BarIconButton.svgAsset(
       "assets/images/cancel.svg",
       iconSize: widget.size.px,
       onPressed: () => Navigator.maybePop(context),
@@ -90,7 +90,7 @@ class _TopBarState extends State<TopBar> {
   }
 
   Widget _backButton(BuildContext context) {
-    return SvgIconButton.asset(
+    return BarIconButton.svgAsset(
       "assets/images/back.svg",
       iconSize: widget.size.px,
       onPressed: () => Navigator.maybePop(context),
@@ -123,7 +123,7 @@ class _TopBarState extends State<TopBar> {
       );
     } else {
       if (hasDrawer) {
-        leading = SvgIconButton.asset(
+        leading = BarIconButton.svgAsset(
           "assets/images/menu.svg",
           iconSize: widget.size.px,
           onPressed: () => scaffold.openDrawer(),
@@ -150,12 +150,12 @@ class _TopBarState extends State<TopBar> {
       );
     } else {
       if (hasEndDrawer) {
-        actions = SvgIconButton.asset(
+        actions = BarIconButton.svgAsset(
           "assets/images/menu.svg",
           iconSize: widget.size.px,
           onPressed: () => scaffold.openEndDrawer(),
         );
-      } else {}
+      }
     }
 
     final Widget toolbar = NavigationToolbar(

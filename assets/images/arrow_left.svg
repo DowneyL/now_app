@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="29px" viewBox="0 0 15 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Arrow</title>
+    <g id="Tablet" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="3-Walkthrough" transform="translate(-755.000000, -1766.000000)" fill="#FFFFFF">
+            <g id="Group" transform="translate(0.000000, 1518.000000)">
+                <g transform="translate(755.000000, 0.000000)" id="Arrow">
+                    <polygon transform="translate(14.142136, 262.142136) rotate(-225.000000) translate(-14.142136, -262.142136) " points="24.1421356 252.142136 24.1421356 272.142136 4.14213562 272.142136"></polygon>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

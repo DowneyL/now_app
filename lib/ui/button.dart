@@ -20,17 +20,13 @@ class SolidRoundedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      child: ClipRRect(
-        borderRadius: BorderRadius.all(Radius.circular(50.0)),
-        child: RaisedButton(
-          onPressed: onPressed,
-          color: color,
-          padding: EdgeInsets.all(24.0.px),
-          child: Text(text, style: NowTheme.textTheme().button),
-        ),
-      ),
+    return FlatButton(
+      minWidth: width,
+      onPressed: onPressed,
+      color: color,
+      padding: EdgeInsets.all(24.0.px),
+      child: Text(text, style: NowTheme.textTheme().button),
+      shape: StadiumBorder(),
     );
   }
 }
@@ -49,39 +45,36 @@ class HollowRoundedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: width,
-      decoration: BoxDecoration(
-        border: Border.all(
+    return FlatButton(
+      minWidth: width,
+      onPressed: onPressed,
+      color: Colors.transparent,
+      padding: EdgeInsets.all(24.0.px),
+      child: Text(text, style: NowTheme.textTheme().button),
+      shape: StadiumBorder(
+        side: BorderSide(
           color: Color.fromRGBO(255, 255, 255, .5),
         ),
-        borderRadius: BorderRadius.all(Radius.circular(50.0)),
-      ),
-      child: FlatButton(
-        onPressed: onPressed,
-        color: Colors.transparent,
-        padding: EdgeInsets.all(24.0.px),
-        child: Text(text, style: NowTheme.textTheme().button),
       ),
     );
   }
 }
 
-class SvgIconButton extends StatelessWidget {
-  SvgIconButton({
+class BarIconButton extends StatelessWidget {
+  BarIconButton({
     Key key,
     this.iconSize = 26.0,
     @required this.icon,
     @required this.onPressed,
-    this.padding = const EdgeInsets.all(12.0),
+    this.padding = const EdgeInsets.all(14.0),
   }) : super(key: key);
 
-  SvgIconButton.asset(
+  BarIconButton.svgAsset(
     String assetName, {
     Key key,
     this.iconSize = 26.0,
     @required this.onPressed,
-    this.padding = const EdgeInsets.all(12.0),
+    this.padding = const EdgeInsets.all(14.0),
   })  : icon = SvgPicture.asset(assetName),
         super(key: key);
 

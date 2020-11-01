@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Time</title>
+    <g id="Tablet" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="3-Walkthrough" transform="translate(-275.000000, -898.000000)">
+            <g id="Group" transform="translate(0.000000, 128.000000)">
+                <g id="Time" transform="translate(275.000000, 770.000000)">
+                    <g id="Group" transform="translate(10.000000, 10.000000)" stroke="#FFFFFF" stroke-width="2">
+                        <path d="M15,1 C18.8657454,1 22.3655214,2.56732424 24.8989737,5.1007765 C27.4327579,7.63456074 29,11.1347454 29,15 C29,18.8667454 27.4332429,22.3665614 24.9000269,24.8997774 C22.366479,27.4333253 18.8662546,29 15,29 C11.1337454,29 7.63352101,27.4333253 5.09997312,24.8997774 C2.56675709,22.3665614 1,18.8667454 1,15 C1,11.1347454 2.56724208,7.63456074 5.10102632,5.1007765 C7.63447858,2.56732424 11.1342546,1 15,1 Z" id="Oval"></path>
+                        <polyline id="Shape" points="22 17 14 17 14 7"></polyline>
+                    </g>
+                    <rect id="Bounds" x="0" y="0" width="50" height="50"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

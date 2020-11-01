@@ -19,15 +19,15 @@ class _RegisterPageState extends State<RegisterPage> {
       resizeToAvoidBottomInset: false,
       appBar: TopBar(
         leaders: <Widget>[
-          SvgIconButton.asset(
+          BarIconButton.svgAsset(
             "assets/images/menu.svg",
             onPressed: () => print("test1"),
           ),
         ],
         actions: <Widget>[
-          SvgIconButton.asset(
+          BarIconButton.svgAsset(
             "assets/images/cancel.svg",
-            onPressed: () => print("test2"),
+            onPressed: () => Navigator.of(context).pop(),
           ),
         ],
       ),
