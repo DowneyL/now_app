@@ -20,6 +20,8 @@ class NowTheme {
     },
   );
 
+  static const _defaultScaffoldBackgroundColor = Color(0xFFF2F2F2);
+
   /// Text
   static const String primaryFontFamily = "Montserrat";
 
@@ -52,6 +54,7 @@ class NowTheme {
       primarySwatch: orange,
       fontFamily: primaryFontFamily,
       textTheme: lightTextTheme,
+      scaffoldBackgroundColor: _defaultScaffoldBackgroundColor,
     );
   }
 
@@ -61,16 +64,13 @@ class NowTheme {
       primarySwatch: orange,
       fontFamily: primaryFontFamily,
       textTheme: darkTextTheme,
+      scaffoldBackgroundColor: _defaultScaffoldBackgroundColor,
     );
   }
 
   /// Get theme
   static ThemeData theme() {
-    if (Window.brightness == Brightness.light) {
-      return light();
-    }
-
-    return dark();
+    return Window.brightness == Brightness.light ? light() : dark();
   }
 
   /// Get text theme

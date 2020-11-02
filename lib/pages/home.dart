@@ -6,11 +6,6 @@ import 'package:now_app/theme/now_theme.dart';
 import 'package:now_app/ui/card.dart';
 import 'package:now_app/ui/now_ui.dart';
 
-enum ArrowDirection {
-  right,
-  left,
-}
-
 class HomePage extends StatefulWidget {
   static const String routerName = "/home";
 
@@ -53,102 +48,25 @@ class HomePageState extends State<HomePage> {
   }
 
   Widget _buildFirstTopic(BuildContext context, TopicModel topic) {
-    return ImageCard(
+    return BackgroundImageCard(
       height: 430.px,
       padding: EdgeInsets.fromLTRB(50.0.px, 220.0.px, 50.0.px, 0.0.px),
       title: topic.title,
-      coverImage: topic.coverImage,
+      background: topic.coverImage,
       foot: _buildCardFoot(context, topic, Colors.white, Colors.white70),
     );
   }
 
   Widget _buildEachTopic(
       BuildContext context, TopicModel topic, ArrowDirection arrowDirection) {
-    ThemeData theme = Theme.of(context);
-
-    Widget _buildImageCard(ArrowDirection arrowDirection) {
-      Alignment alignment;
-      SvgPicture arrow;
-      Widget image;
-
-      if (arrowDirection == ArrowDirection.right) {
-        alignment = Alignment.centerLeft;
-        arrow = SvgPicture.asset(
-          "assets/images/arrow_right.svg",
-          width: 18.px,
-          height: 18.px,
-        );
-        image = Positioned(
-          child: Align(alignment: alignment, child: arrow),
-          left: -1,
-        );
-      } else {
-        alignment = Alignment.centerRight;
-        arrow = SvgPicture.asset(
-          "assets/images/arrow_left.svg",
-          width: 18.px,
-          height: 18.px,
-        );
-        image = Positioned(
-          child: Align(alignment: alignment, child: arrow),
-          right: -1,
-        );
-      }
-
-      return Expanded(
-        flex: 5,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            Image.asset(topic.coverImage),
-            image,
-          ],
-        ),
-      );
-    }
-
-    Widget topicInfoCard = Expanded(
-      flex: 5,
-      child: Stack(
-        children: [
-          Container(color: Colors.white),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 36.px),
-            child: Column(
-              children: [
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 58.px),
-                  child: Text(
-                    topic.title,
-                    style: theme.textTheme.headline4.copyWith(
-                      color: Colors.black,
-                      fontSize: 22.px,
-                      fontWeight: FontWeight.bold,
-                      height: 1.6,
-                    ),
-                    textAlign: TextAlign.center,
-                    maxLines: 3,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ),
-                _buildCardFoot(context, topic, Colors.black, Colors.black54),
-              ],
-            ),
-          ),
-        ],
-      ),
-    );
-
-    List<Widget> children = arrowDirection == ArrowDirection.right
-        ? [topicInfoCard, _buildImageCard(ArrowDirection.right)]
-        : [_buildImageCard(ArrowDirection.left), topicInfoCard];
-
-    return Container(
+    return ArrowImageCard(
       height: 265.px,
-      child: Flex(
-        direction: Axis.horizontal,
-        children: children,
-      ),
+      direction: arrowDirection,
+      title: topic.title,
+      infoCardPadding: EdgeInsets.symmetric(horizontal: 36.px),
+      titlePadding: EdgeInsets.symmetric(vertical: 58.px),
+      image: Image.asset(topic.coverImage),
+      foot: _buildCardFoot(context, topic, Colors.black, Colors.black54),
     );
   }
 
@@ -231,7 +149,6 @@ class HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      backgroundColor: Color(0xFFF2F2F2),
       body: Container(
         child: ListView.builder(
           itemCount: topics.length,

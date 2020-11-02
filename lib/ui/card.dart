@@ -3,21 +3,29 @@ import 'package:flutter_svg/svg.dart';
 
 import 'base.dart';
 import 'extension/double.dart';
+import 'extension/int.dart';
 
-class ImageCard extends StatelessWidget {
+enum ArrowDirection {
+  right,
+  left,
+  up,
+  down,
+}
+
+class BackgroundImageCard extends StatelessWidget {
   static double _defaultTitleAndFootSpace = 30.0.px;
 
-  final String coverImage;
+  final String background;
   final String title;
   final TextStyle textStyle;
   final double height;
   final EdgeInsetsGeometry padding;
-  final SpaceBetweenCardFoot foot;
+  final Widget foot;
   final double titleAndFootSpace;
 
-  ImageCard({
+  BackgroundImageCard({
     @required this.title,
-    @required this.coverImage,
+    @required this.background,
     this.textStyle,
     this.padding,
     this.height,
@@ -30,7 +38,7 @@ class ImageCard extends StatelessWidget {
       height: height,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage(coverImage),
+          image: AssetImage(background),
           fit: BoxFit.cover,
         ),
       ),
@@ -186,6 +194,191 @@ class CustomUnderlineText extends StatelessWidget {
             ),
           )
         ],
+      ),
+    );
+  }
+}
+
+class ArrowImageCard extends StatelessWidget {
+  static double defaultArrowSize = 18.0.px;
+
+  final double height;
+  final double width;
+  final ArrowDirection direction;
+  final String title;
+  final EdgeInsetsGeometry titlePadding;
+  final TextStyle textStyle;
+  final arrowSize;
+  final Widget image;
+  final Color backgroundColor;
+  final EdgeInsetsGeometry infoCardPadding;
+  final Widget foot;
+
+  ArrowImageCard({
+    @required this.direction,
+    @required this.title,
+    this.titlePadding,
+    this.textStyle,
+    this.height,
+    this.width,
+    @required this.image,
+    this.arrowSize,
+    this.backgroundColor,
+    this.infoCardPadding,
+    this.foot,
+  });
+
+  Widget _buildArrow() {
+    String assetName;
+
+    switch (direction) {
+      case ArrowDirection.left:
+        assetName = "assets/images/arrow_left.svg";
+        break;
+      case ArrowDirection.right:
+        assetName = "assets/images/arrow_right.svg";
+        break;
+      case ArrowDirection.up:
+        assetName = "assets/images/arrow_up.svg";
+        break;
+      case ArrowDirection.down:
+        assetName = "assets/images/arrow_down.svg";
+        break;
+    }
+
+    return SvgPicture.asset(
+      assetName,
+      width: arrowSize ?? defaultArrowSize,
+      height: arrowSize ?? defaultArrowSize,
+    );
+  }
+
+  Widget _buildImageFrameWithArrow(Widget arrow) {
+    Alignment alignment;
+    Widget imageFrame;
+
+    switch (direction) {
+      case ArrowDirection.left:
+        alignment = Alignment.centerRight;
+        imageFrame = Positioned(
+          child: Align(alignment: alignment, child: arrow),
+          right: -1,
+        );
+        break;
+      case ArrowDirection.right:
+        alignment = Alignment.centerLeft;
+        imageFrame = Positioned(
+          child: Align(alignment: alignment, child: arrow),
+          left: -1,
+        );
+        break;
+      case ArrowDirection.up:
+        alignment = Alignment.bottomCenter;
+        imageFrame = Positioned(
+          child: Align(alignment: alignment, child: arrow),
+          bottom: -1,
+        );
+        break;
+      case ArrowDirection.down:
+        alignment = Alignment.topCenter;
+        imageFrame = Positioned(
+          child: Align(alignment: alignment, child: arrow),
+          top: -1,
+        );
+        break;
+    }
+
+    return imageFrame;
+  }
+
+  Widget _buildImageCard() {
+    Widget arrow = _buildArrow();
+    Widget imageFrameWithArrow = _buildImageFrameWithArrow(arrow);
+
+    return Expanded(
+      flex: 5,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [image, imageFrameWithArrow],
+      ),
+    );
+  }
+
+  Widget _buildInfoCard() {
+    TextStyle defaultTextStyle;
+    defaultTextStyle = textStyle ??
+        TextStyle(
+          color: Colors.black,
+          fontSize: 22.px,
+          fontWeight: FontWeight.bold,
+          height: 1.6,
+        );
+
+    return Expanded(
+      flex: 5,
+      child: Stack(
+        children: [
+          Container(color: backgroundColor ?? Colors.white),
+          Padding(
+            padding: infoCardPadding ?? defaultPadding,
+            child: Column(
+              children: [
+                Padding(
+                  padding: titlePadding ?? defaultPadding,
+                  child: Text(
+                    title,
+                    style: defaultTextStyle,
+                    textAlign: TextAlign.center,
+                    maxLines: 3,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                foot ?? Container(),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Axis _getAxis() {
+    Axis axis;
+    switch (direction) {
+      case ArrowDirection.left:
+      case ArrowDirection.right:
+        axis = Axis.horizontal;
+        break;
+      case ArrowDirection.up:
+      case ArrowDirection.down:
+        axis = Axis.vertical;
+    }
+
+    return axis;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    List<Widget> children;
+    Widget infoCard = _buildInfoCard();
+    Widget imageCard = _buildImageCard();
+
+    switch (direction) {
+      case ArrowDirection.left:
+      case ArrowDirection.up:
+        children = [imageCard, infoCard];
+        break;
+      case ArrowDirection.right:
+      case ArrowDirection.down:
+        children = [infoCard, imageCard];
+    }
+
+    return Container(
+      height: height,
+      width: width,
+      child: Flex(
+        direction: _getAxis(),
+        children: children,
       ),
     );
   }
