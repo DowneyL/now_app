@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:now_app/models/topics.dart';
+import 'package:now_app/theme/now_theme.dart';
 import 'package:now_app/ui/now_ui.dart';
 
 enum ArrowDirection {
@@ -258,6 +259,47 @@ class HomePageState extends State<HomePage> {
         : _buildOddTopic(context, topic);
   }
 
+  Widget _buildFloatingActionButton(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.only(bottom: 100.px),
+      child: SpacedColumn(
+        space: 20.px,
+        children: [
+          FlatButton(
+            onPressed: () => print(1),
+            color: NowTheme.orange,
+            shape: CircleBorder(),
+            padding: EdgeInsets.all(14.px),
+            child: SvgPicture.asset(
+              "assets/images/comment.svg",
+              height: 22.px,
+            ),
+          ),
+          FlatButton(
+            onPressed: () => print(2),
+            color: NowTheme.orange,
+            shape: CircleBorder(),
+            padding: EdgeInsets.all(14.px),
+            child: SvgPicture.asset(
+              "assets/images/mark.svg",
+              height: 22.px,
+            ),
+          ),
+          FlatButton(
+            onPressed: () => print(3),
+            color: NowTheme.orange,
+            shape: CircleBorder(),
+            padding: EdgeInsets.all(14.px),
+            child: SvgPicture.asset(
+              "assets/images/share.svg",
+              height: 18.px,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     List<dynamic> jsonResponse = json.decode(data);
@@ -291,6 +333,8 @@ class HomePageState extends State<HomePage> {
           itemBuilder: topicBuilder,
         ),
       ),
+      floatingActionButton: _buildFloatingActionButton(context),
+      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }
