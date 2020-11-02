@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+const defaultUnderlineColor = Colors.grey;
+const defaultTextColor = Colors.white;
+const defaultPadding = EdgeInsets.all(0);
+
 class SpacedRow extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
   final double space;

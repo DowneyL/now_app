@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:now_app/models/topics.dart';
 import 'package:now_app/theme/now_theme.dart';
+import 'package:now_app/ui/card.dart';
 import 'package:now_app/ui/now_ui.dart';
 
 enum ArrowDirection {
@@ -21,132 +22,43 @@ class HomePageState extends State<HomePage> {
   static const String avatarUrl =
       "http://himg.bdimg.com/sys/portrait/item/0660e585abe69c88e7acace4ba94e5a4a9913d.jpg";
 
-  Widget _buildFirstTopicBackground(BuildContext context, TopicModel topic) {
-    return Container(
-      height: 430.px,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage(topic.coverImage),
-          fit: BoxFit.cover,
+  Widget _buildCardFoot(BuildContext context, TopicModel topic, Color textColor,
+      Color iconColor) {
+    return SpaceBetweenCardFoot(
+      actionSpace: 10.0.px,
+      startActions: [
+        SvgIconText(
+          assetName: "assets/images/announce.svg",
+          text: topic.author,
+          iconColor: iconColor,
+          textColor: textColor,
         ),
-      ),
-    );
-  }
-
-  Widget _buildFirstTopicTitle(BuildContext context, TopicModel topic) {
-    ThemeData theme = Theme.of(context);
-    return Padding(
-      padding: EdgeInsets.only(right: 120.px),
-      child: Text(
-        topic.title,
-        style: theme.textTheme.headline4.copyWith(
-          color: Colors.white,
-          height: 1.6,
-          fontWeight: FontWeight.w700,
-          fontSize: 40.px,
+        SvgIconText(
+          assetName: "assets/images/time.svg",
+          text: topic.createTime,
+          iconColor: iconColor,
+          textColor: textColor,
         ),
-        maxLines: 2,
-        overflow: TextOverflow.ellipsis,
-      ),
-    );
-  }
-
-  Widget _buildTopicBottomInfo(BuildContext context, TopicModel topic,
-      Color textColor, Color iconColor) {
-    ThemeData theme = Theme.of(context);
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        SpacedRow(
-          space: 10.px,
-          children: [
-            SpacedRow(
-              space: 2.px,
-              children: [
-                SvgPicture.asset(
-                  "assets/images/announce.svg",
-                  height: 28.0.px,
-                  color: iconColor,
-                ),
-                Text(
-                  topic.author,
-                  style: theme.textTheme.bodyText2.copyWith(
-                    fontSize: 13.px,
-                    color: textColor,
-                  ),
-                ),
-              ],
-            ),
-            SpacedRow(
-              space: 2.px,
-              children: [
-                SvgPicture.asset(
-                  "assets/images/time.svg",
-                  height: 28.0.px,
-                  color: iconColor,
-                ),
-                Text(
-                  topic.createTime,
-                  style: theme.textTheme.bodyText2.copyWith(
-                    fontSize: 13.px,
-                    color: textColor,
-                  ),
-                ),
-              ],
-            ),
-          ],
+      ],
+      endActions: [
+        CustomUnderlineText(
+          underlinePadding: EdgeInsets.symmetric(horizontal: 2.0.px),
+          text: topic.category,
+          space: 8.px,
+          fontSize: 11.px,
+          textColor: textColor,
         ),
-        IntrinsicWidth(
-          child: SpacedColumn(
-            space: 8.px,
-            children: [
-              Text(
-                topic.category,
-                style: theme.textTheme.bodyText2.copyWith(
-                  fontSize: 11.px,
-                  color: textColor,
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(horizontal: 2.px),
-                child: SizedBox(
-                  child: Container(
-                    height: 1,
-                    color: Colors.grey,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        )
       ],
     );
   }
 
   Widget _buildFirstTopic(BuildContext context, TopicModel topic) {
-    return Stack(
-      children: [
-        _buildFirstTopicBackground(context, topic),
-        Container(
-          height: 430.px,
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(50.0.px, 220.0.px, 50.0.px, 0.px),
-            child: SpacedColumn(
-              space: 30.px,
-              children: [
-                _buildFirstTopicTitle(context, topic),
-                _buildTopicBottomInfo(
-                  context,
-                  topic,
-                  Colors.white,
-                  Colors.white70,
-                ),
-              ],
-            ),
-          ),
-        )
-      ],
+    return ImageCard(
+      height: 430.px,
+      padding: EdgeInsets.fromLTRB(50.0.px, 220.0.px, 50.0.px, 0.0.px),
+      title: topic.title,
+      coverImage: topic.coverImage,
+      foot: _buildCardFoot(context, topic, Colors.white, Colors.white70),
     );
   }
 
@@ -219,12 +131,7 @@ class HomePageState extends State<HomePage> {
                     overflow: TextOverflow.ellipsis,
                   ),
                 ),
-                _buildTopicBottomInfo(
-                  context,
-                  topic,
-                  Colors.black,
-                  Colors.black54,
-                ),
+                _buildCardFoot(context, topic, Colors.black, Colors.black54),
               ],
             ),
           ),
@@ -259,44 +166,42 @@ class HomePageState extends State<HomePage> {
         : _buildOddTopic(context, topic);
   }
 
-  Widget _buildFloatingActionButton(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(bottom: 100.px),
-      child: SpacedColumn(
-        space: 20.px,
-        children: [
-          FlatButton(
-            onPressed: () => print(1),
-            color: NowTheme.orange,
-            shape: CircleBorder(),
-            padding: EdgeInsets.all(14.px),
-            child: SvgPicture.asset(
-              "assets/images/comment.svg",
-              height: 22.px,
-            ),
+  // TODO: 手势操作展示
+  Widget _buildTopicActionButton(BuildContext context, TopicModel topic) {
+    return SpacedColumn(
+      space: 20.px,
+      children: [
+        FlatButton(
+          onPressed: () => print(1),
+          color: NowTheme.orange,
+          shape: CircleBorder(),
+          padding: EdgeInsets.all(14.px),
+          child: SvgPicture.asset(
+            "assets/images/comment.svg",
+            height: 22.px,
           ),
-          FlatButton(
-            onPressed: () => print(2),
-            color: NowTheme.orange,
-            shape: CircleBorder(),
-            padding: EdgeInsets.all(14.px),
-            child: SvgPicture.asset(
-              "assets/images/mark.svg",
-              height: 22.px,
-            ),
+        ),
+        FlatButton(
+          onPressed: () => print(2),
+          color: NowTheme.orange,
+          shape: CircleBorder(),
+          padding: EdgeInsets.all(14.px),
+          child: SvgPicture.asset(
+            "assets/images/mark.svg",
+            height: 22.px,
           ),
-          FlatButton(
-            onPressed: () => print(3),
-            color: NowTheme.orange,
-            shape: CircleBorder(),
-            padding: EdgeInsets.all(14.px),
-            child: SvgPicture.asset(
-              "assets/images/share.svg",
-              height: 18.px,
-            ),
+        ),
+        FlatButton(
+          onPressed: () => print(3),
+          color: NowTheme.orange,
+          shape: CircleBorder(),
+          padding: EdgeInsets.all(14.px),
+          child: SvgPicture.asset(
+            "assets/images/share.svg",
+            height: 18.px,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
@@ -333,8 +238,6 @@ class HomePageState extends State<HomePage> {
           itemBuilder: topicBuilder,
         ),
       ),
-      floatingActionButton: _buildFloatingActionButton(context),
-      floatingActionButtonLocation: FloatingActionButtonLocation.startFloat,
     );
   }
 }
