@@ -1,6 +1,6 @@
 import "package:flutter/material.dart";
 
-import 'pages/home.dart';
+import 'pages/topic/home.dart';
 import "pages/user/login.dart";
 import "pages/user/register.dart";
 
