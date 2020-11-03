@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:now_app/generated/l10n.dart';
+import 'package:now_app/models/menus.dart';
+import 'package:now_app/providers/menu.dart';
 import 'package:now_app/ui/now_ui.dart';
+import 'package:provider/provider.dart';
 
 class MenuPage extends StatelessWidget {
+  final List<MenusModel> menus;
+
+  MenuPage({@required this.menus});
+
   static const String avatarUrl =
       "http://himg.bdimg.com/sys/portrait/item/0660e585abe69c88e7acace4ba94e5a4a9913d.jpg";
 
@@ -11,14 +18,17 @@ class MenuPage extends StatelessWidget {
     final ThemeData theme = Theme.of(context);
     final NavigatorState navigator = Navigator.of(context);
     final S s = S.of(context);
+    final MenuProvider menuProvider = Provider.of<MenuProvider>(context);
 
-    Widget _buildEachMenu(
-        String assetName, String text, GestureTapCallback tapCallback,
+    Widget _buildEachMenu(int index, String assetName, String text,
         {double iconSize}) {
       iconSize = iconSize ?? 20.0.px;
       return FlatButton(
         padding: EdgeInsets.all(0),
-        onPressed: tapCallback,
+        onPressed: () {
+          navigator.pop(context);
+          menuProvider.index = index;
+        },
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 20.px, horizontal: 40.px),
           child: Container(
@@ -56,60 +66,17 @@ class MenuPage extends StatelessWidget {
 
     Widget _buildMenus() {
       return SpacedColumn(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildEachMenu(
-            "assets/images/list.svg",
-            s.newest.toUpperCase(),
-            () => print("1"),
-            iconSize: 18.0.px,
-          ),
-          _buildEachMenu(
-            "assets/images/channel.svg",
-            s.channels.toUpperCase(),
-            () => navigator.pushNamed("/channel"),
-          ),
-          _buildEachMenu(
-            "assets/images/bookmark.svg",
-            s.bookmarks.toUpperCase(),
-            () => print("3"),
-          ),
-          _buildEachMenu(
-            "assets/images/overview.svg",
-            s.overview.toUpperCase(),
-            () => print("4"),
-            iconSize: 22.0.px,
-          ),
-          _buildEachMenu(
-            "assets/images/calendar.svg",
-            s.calendar.toUpperCase(),
-            () => print("5"),
-          ),
-          _buildEachMenu(
-            "assets/images/timeline.svg",
-            s.timeline.toUpperCase(),
-            () => print("6"),
-            iconSize: 22.0.px,
-          ),
-          _buildEachMenu(
-            "assets/images/profile.svg",
-            s.profile.toUpperCase(),
-            () => print("7"),
-            iconSize: 22.px,
-          ),
-          _buildEachMenu(
-            "assets/images/widget.svg",
-            s.widget.toUpperCase(),
-            () => print("8"),
-            iconSize: 24.0.px,
-          ),
-          _buildEachMenu(
-            "assets/images/setting.svg",
-            s.setting.toUpperCase(),
-            () => print("9"),
-          ),
-        ],
-      );
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: menus
+              .asMap()
+              .keys
+              .map((index) => _buildEachMenu(
+                    index,
+                    menus[index].assetName,
+                    menus[index].title,
+                    iconSize: menus[index].iconSize,
+                  ))
+              .toList());
     }
 
     Widget _buildUserInfo() {

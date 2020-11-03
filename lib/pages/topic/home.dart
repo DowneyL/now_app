@@ -1,11 +1,12 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:now_app/models/topics.dart';
+import 'package:now_app/generated/l10n.dart';
+import 'package:now_app/models/menus.dart';
+import 'package:now_app/pages/channel/channel.dart';
 import 'package:now_app/pages/topic/menu.dart';
-import 'package:now_app/theme/now_theme.dart';
-import 'package:now_app/ui/card.dart';
+import 'package:now_app/pages/topic/topic.dart';
+import 'package:now_app/providers/menu.dart';
 import 'package:now_app/ui/now_ui.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   static const String routerName = "/home";
@@ -18,125 +19,65 @@ class HomePageState extends State<HomePage> {
   static const String avatarUrl =
       "http://himg.bdimg.com/sys/portrait/item/0660e585abe69c88e7acace4ba94e5a4a9913d.jpg";
 
-  Widget _buildCardFoot(BuildContext context, TopicModel topic, Color textColor,
-      Color iconColor) {
-    return SpaceBetweenCardFoot(
-      actionSpace: 10.0.px,
-      startActions: [
-        SvgIconText(
-          assetName: "assets/images/announce.svg",
-          text: topic.author,
-          iconColor: iconColor,
-          textStyle: TextStyle(color: textColor),
-        ),
-        SvgIconText(
-          assetName: "assets/images/time.svg",
-          text: topic.createTime,
-          iconColor: iconColor,
-          textStyle: TextStyle(color: textColor),
-        ),
-      ],
-      endActions: [
-        CustomUnderlineText(
-          underlinePadding: EdgeInsets.symmetric(horizontal: 2.0.px),
-          text: topic.channel,
-          space: 8.px,
-          fontSize: 11.px,
-          textColor: textColor,
-        ),
-      ],
-    );
-  }
-
-  Widget _buildFirstTopic(BuildContext context, TopicModel topic) {
-    return BackgroundImageCard(
-      height: 430.px,
-      padding: EdgeInsets.fromLTRB(50.0.px, 220.0.px, 50.0.px, 0.0.px),
-      title: topic.title,
-      background: topic.coverImage,
-      foot: _buildCardFoot(context, topic, Colors.white, Colors.white70),
-    );
-  }
-
-  Widget _buildEachTopic(
-      BuildContext context, TopicModel topic, ArrowDirection arrowDirection) {
-    return ArrowImageCard(
-      height: 265.px,
-      direction: arrowDirection,
-      title: topic.title,
-      infoCardPadding: EdgeInsets.symmetric(horizontal: 36.px),
-      titlePadding: EdgeInsets.symmetric(vertical: 58.px),
-      image: Image.asset(topic.coverImage),
-      foot: _buildCardFoot(context, topic, Colors.black, Colors.black54),
-    );
-  }
-
-  Widget _buildOddTopic(BuildContext context, TopicModel topic) {
-    return _buildEachTopic(context, topic, ArrowDirection.right);
-  }
-
-  Widget _buildEvenTopic(BuildContext context, TopicModel topic) {
-    return _buildEachTopic(context, topic, ArrowDirection.left);
-  }
-
-  Widget _buildTopic(BuildContext context, int index, TopicModel topic) {
-    return index % 2 == 0
-        ? _buildEvenTopic(context, topic)
-        : _buildOddTopic(context, topic);
-  }
-
-  // TODO: 手势操作展示
-  Widget _buildTopicActionButton(BuildContext context, TopicModel topic) {
-    return SpacedColumn(
-      space: 20.px,
-      children: [
-        FlatButton(
-          onPressed: () => print(1),
-          color: NowTheme.orange,
-          shape: CircleBorder(),
-          padding: EdgeInsets.all(14.px),
-          child: SvgPicture.asset(
-            "assets/images/comment.svg",
-            height: 22.px,
-          ),
-        ),
-        FlatButton(
-          onPressed: () => print(2),
-          color: NowTheme.orange,
-          shape: CircleBorder(),
-          padding: EdgeInsets.all(14.px),
-          child: SvgPicture.asset(
-            "assets/images/mark.svg",
-            height: 22.px,
-          ),
-        ),
-        FlatButton(
-          onPressed: () => print(3),
-          color: NowTheme.orange,
-          shape: CircleBorder(),
-          padding: EdgeInsets.all(14.px),
-          child: SvgPicture.asset(
-            "assets/images/share.svg",
-            height: 18.px,
-          ),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
-    List<dynamic> jsonResponse = json.decode(data);
-    List<TopicModel> topics =
-        jsonResponse.map((item) => TopicModel.fromJson(item)).toList();
-
-    Widget topicBuilder(BuildContext context, int index) {
-      return index == 0
-          ? _buildFirstTopic(context, topics[index])
-          : _buildTopic(context, index, topics[index]);
-    }
-
     final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
+    final S s = S.of(context);
+
+    final List<MenusModel> menus = [
+      MenusModel(
+        assetName: "assets/images/list.svg",
+        title: s.newest.toUpperCase(),
+        page: TopicPage(),
+        iconSize: 18.px,
+      ),
+      MenusModel(
+        assetName: "assets/images/channel.svg",
+        title: s.channels.toUpperCase(),
+        page: ChannelPage(),
+      ),
+      MenusModel(
+        assetName: "assets/images/bookmark.svg",
+        title: s.bookmarks.toUpperCase(),
+        page: Container(),
+      ),
+      MenusModel(
+        assetName: "assets/images/overview.svg",
+        title: s.overview.toUpperCase(),
+        page: Container(),
+        iconSize: 22.px,
+      ),
+      MenusModel(
+        assetName: "assets/images/calendar.svg",
+        title: s.calendar.toUpperCase(),
+        page: Container(),
+      ),
+      MenusModel(
+        assetName: "assets/images/timeline.svg",
+        title: s.timeline.toUpperCase(),
+        page: Container(),
+        iconSize: 22.px,
+      ),
+      MenusModel(
+        assetName: "assets/images/profile.svg",
+        title: s.profile.toUpperCase(),
+        page: Container(),
+        iconSize: 22.px,
+      ),
+      MenusModel(
+        assetName: "assets/images/widget.svg",
+        title: s.widget.toUpperCase(),
+        page: Container(),
+        iconSize: 24.px,
+      ),
+      MenusModel(
+        assetName: "assets/images/setting.svg",
+        title: s.setting.toUpperCase(),
+        page: Container(),
+      ),
+    ];
+
+    final menuPages = menus.map((e) => e.page).toList();
 
     return Scaffold(
       key: key,
@@ -156,13 +97,15 @@ class HomePageState extends State<HomePage> {
           ),
         ],
       ),
-      body: Container(
-        child: ListView.builder(
-          itemCount: topics.length,
-          itemBuilder: topicBuilder,
-        ),
+      drawer: MenuPage(menus: menus),
+      body: Consumer<MenuProvider>(
+        builder: (context, MenuProvider provider, child) {
+          return IndexedStack(
+            index: provider.index,
+            children: menuPages,
+          );
+        },
       ),
-      drawer: MenuPage(),
     );
   }
 }
