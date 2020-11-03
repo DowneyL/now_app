@@ -39,7 +39,7 @@ class HomePageState extends State<HomePage> {
       endActions: [
         CustomUnderlineText(
           underlinePadding: EdgeInsets.symmetric(horizontal: 2.0.px),
-          text: topic.category,
+          text: topic.channel,
           space: 8.px,
           fontSize: 11.px,
           textColor: textColor,

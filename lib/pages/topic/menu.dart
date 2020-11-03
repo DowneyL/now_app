@@ -9,6 +9,7 @@ class MenuPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     ThemeData theme = Theme.of(context);
+    NavigatorState navigator = Navigator.of(context);
 
     Widget _buildEachMenu(
         String assetName, String text, GestureTapCallback tapCallback) {
@@ -48,7 +49,7 @@ class MenuPage extends StatelessWidget {
           _buildEachMenu(
             "assets/images/channel.svg",
             "CHANNELS",
-            () => print("2"),
+            () => navigator.pushNamed("/channel"),
           ),
           _buildEachMenu(
             "assets/images/bookmark.svg",

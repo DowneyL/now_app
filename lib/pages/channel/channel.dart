@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:now_app/ui/now_ui.dart';
 
-class CategoryPage extends StatelessWidget {
-  static const String routerName = "/category";
+class ChannelPage extends StatelessWidget {
+  static const String routerName = "/channel";
   static const String avatarUrl =
       "http://himg.bdimg.com/sys/portrait/item/0660e585abe69c88e7acace4ba94e5a4a9913d.jpg";
 
