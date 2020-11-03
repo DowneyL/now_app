@@ -115,7 +115,7 @@ class _TopBarState extends State<TopBar> {
     final double toolBarHeight = widget.toolBarHeight ?? kToolbarHeight;
 
     Widget leading;
-    if (widget.leaders != null && widget.leaders.isNotEmpty) {
+    if (widget.leaders != null) {
       leading = Row(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.stretch,

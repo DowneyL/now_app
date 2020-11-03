@@ -1,0 +1,23 @@
+{
+  "@@locale": "en",
+  "title": "Meet Now",
+  "newest": "new",
+  "channels": "channels",
+  "bookmarks": "bookmarks",
+  "overview": "overview",
+  "calendar": "calendar",
+  "timeline": "timeline",
+  "profile": "profile",
+  "widget": "widget",
+  "setting": "setting",
+  "logout": "log out",
+  "login": "log in",
+  "username": "Username",
+  "password": "Password",
+  "email": "Email",
+  "confirmLogin": "Get Started",
+  "createAccount": "Create Account",
+  "needHelp": "Need Help?",
+  "registerAndContinue": "Continue",
+  "termsAndCondition": "Terms & Conditions"
+}

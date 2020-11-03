@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:now_app/ui/card.dart';
+import 'package:now_app/generated/l10n.dart';
 import 'package:now_app/ui/now_ui.dart';
 
 class MenuPage extends StatelessWidget {
@@ -8,29 +8,46 @@ class MenuPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ThemeData theme = Theme.of(context);
-    NavigatorState navigator = Navigator.of(context);
+    final ThemeData theme = Theme.of(context);
+    final NavigatorState navigator = Navigator.of(context);
+    final S s = S.of(context);
 
     Widget _buildEachMenu(
-        String assetName, String text, GestureTapCallback tapCallback) {
-      double size = assetName == "assets/images/list.svg" ? 18.px : 20.px;
-      if (assetName == "assets/images/profile.svg" ||
-          assetName == "assets/images/widget.svg") {
-        size = 21.px;
-      }
+        String assetName, String text, GestureTapCallback tapCallback,
+        {double iconSize}) {
+      iconSize = iconSize ?? 20.0.px;
       return FlatButton(
+        padding: EdgeInsets.all(0),
         onPressed: tapCallback,
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 20.px, horizontal: 40.px),
           child: Container(
             width: double.infinity,
-            child: SvgIconText(
-              space: 30.px,
-              assetName: assetName,
-              text: text,
-              iconSize: size,
-              iconColor: Colors.white,
-              textStyle: TextStyle(fontWeight: FontWeight.w600),
+            child: Flex(
+              direction: Axis.horizontal,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: SvgPicture.asset(
+                    assetName,
+                    height: iconSize,
+                    width: iconSize,
+                  ),
+                ),
+                Expanded(
+                  flex: 2,
+                  child: SizedBox(),
+                ),
+                Expanded(
+                  flex: 7,
+                  child: Text(
+                    text,
+                    style: theme.textTheme.bodyText2
+                        .copyWith(fontWeight: FontWeight.w600),
+                  ),
+                )
+              ],
             ),
           ),
         ),
@@ -43,47 +60,52 @@ class MenuPage extends StatelessWidget {
         children: [
           _buildEachMenu(
             "assets/images/list.svg",
-            "NEWS",
+            s.newest.toUpperCase(),
             () => print("1"),
+            iconSize: 18.0.px,
           ),
           _buildEachMenu(
             "assets/images/channel.svg",
-            "CHANNELS",
+            s.channels.toUpperCase(),
             () => navigator.pushNamed("/channel"),
           ),
           _buildEachMenu(
             "assets/images/bookmark.svg",
-            "BOOKMARKS",
+            s.bookmarks.toUpperCase(),
             () => print("3"),
           ),
           _buildEachMenu(
             "assets/images/overview.svg",
-            "OVERVIEW",
+            s.overview.toUpperCase(),
             () => print("4"),
+            iconSize: 22.0.px,
           ),
           _buildEachMenu(
             "assets/images/calendar.svg",
-            "CALENDAR",
+            s.calendar.toUpperCase(),
             () => print("5"),
           ),
           _buildEachMenu(
             "assets/images/timeline.svg",
-            "TIMELINE",
+            s.timeline.toUpperCase(),
             () => print("6"),
+            iconSize: 22.0.px,
           ),
           _buildEachMenu(
             "assets/images/profile.svg",
-            "PROFILE",
+            s.profile.toUpperCase(),
             () => print("7"),
+            iconSize: 22.px,
           ),
           _buildEachMenu(
             "assets/images/widget.svg",
-            "WIDGETS",
+            s.widget.toUpperCase(),
             () => print("8"),
+            iconSize: 24.0.px,
           ),
           _buildEachMenu(
             "assets/images/setting.svg",
-            "SETTING",
+            s.setting.toUpperCase(),
             () => print("9"),
           ),
         ],
@@ -101,26 +123,32 @@ class MenuPage extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SpacedColumn(
-                space: 2.px,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "LOG OUT",
-                    style: theme.textTheme.bodyText2.copyWith(
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.1,
+              GestureDetector(
+                onTap: () {
+                  navigator.pop(context);
+                  navigator.pushNamed("/login");
+                },
+                child: SpacedColumn(
+                  space: 2.px,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      s.logout.toUpperCase(),
+                      style: theme.textTheme.bodyText2.copyWith(
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1.1,
+                      ),
                     ),
-                  ),
-                  Text(
-                    "August 5th",
-                    style: theme.textTheme.bodyText2.copyWith(
-                      fontSize: 12.px,
-                      color: Colors.white.withOpacity(.5),
+                    Text(
+                      "August 5th",
+                      style: theme.textTheme.bodyText2.copyWith(
+                        fontSize: 12.px,
+                        color: Colors.white.withOpacity(.5),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               CircleAvatar(
                 backgroundImage: NetworkImage(avatarUrl),

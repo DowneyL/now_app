@@ -1,0 +1,23 @@
+{
+  "@@locale": "zh_CN",
+  "title": "Meet Now",
+  "newest": "最新",
+  "channels": "频道",
+  "bookmarks": "书签",
+  "overview": "概览",
+  "calendar": "我的日历",
+  "timeline": "时间线",
+  "profile": "个人资料",
+  "widget": "小组件",
+  "setting": "设置",
+  "logout": "退出登录",
+  "login": "登录",
+  "username": "用户名",
+  "password": "密码",
+  "email": "邮箱",
+  "confirmLogin": "确认登陆",
+  "createAccount": "创建账号",
+  "needHelp": "需要帮助？",
+  "registerAndContinue": "继续",
+  "termsAndCondition": "条款和条件"
+}
