@@ -58,8 +58,9 @@ class FrostedGlassMask extends StatelessWidget {
 
 class ImageBackground extends StatelessWidget {
   final String url;
+  final Color color;
 
-  ImageBackground(this.url);
+  ImageBackground({@required this.url, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -68,6 +69,7 @@ class ImageBackground extends StatelessWidget {
       child: Image.asset(
         url,
         fit: BoxFit.cover,
+        color: color,
       ),
     );
   }

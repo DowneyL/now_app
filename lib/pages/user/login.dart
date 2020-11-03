@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
         fit: StackFit.expand,
         children: <Widget>[
           Mask(),
-          ImageBackground("assets/images/bg.png"),
+          ImageBackground(url: "assets/images/bg.png"),
           _buildLoginContent(),
         ],
       ),

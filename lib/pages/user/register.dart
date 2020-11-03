@@ -37,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
             alignment: AlignmentDirectional.center,
             fit: StackFit.expand,
             children: <Widget>[
-              ImageBackground("assets/images/bg.png"),
+              ImageBackground(url: "assets/images/bg.png"),
               FrostedGlassMask(),
               buildRegisterContent(),
             ],

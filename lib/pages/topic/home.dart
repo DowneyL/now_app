@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:now_app/models/topics.dart';
+import 'package:now_app/pages/topic/menu.dart';
 import 'package:now_app/theme/now_theme.dart';
 import 'package:now_app/ui/card.dart';
 import 'package:now_app/ui/now_ui.dart';
@@ -26,13 +27,13 @@ class HomePageState extends State<HomePage> {
           assetName: "assets/images/announce.svg",
           text: topic.author,
           iconColor: iconColor,
-          textColor: textColor,
+          textStyle: TextStyle(color: textColor),
         ),
         SvgIconText(
           assetName: "assets/images/time.svg",
           text: topic.createTime,
           iconColor: iconColor,
-          textColor: textColor,
+          textStyle: TextStyle(color: textColor),
         ),
       ],
       endActions: [
@@ -135,10 +136,16 @@ class HomePageState extends State<HomePage> {
           : _buildTopic(context, index, topics[index]);
     }
 
+    final GlobalKey<ScaffoldState> key = GlobalKey<ScaffoldState>();
+
     return Scaffold(
+      key: key,
       appBar: TopBar(
         leaders: [
-          BarIconButton.svgAsset("assets/images/menu.svg", onPressed: null),
+          BarIconButton.svgAsset(
+            "assets/images/menu.svg",
+            onPressed: () => key.currentState.openDrawer(),
+          ),
         ],
         actions: [
           BarIconButton.svgAsset("assets/images/search.svg", onPressed: null),
@@ -155,6 +162,7 @@ class HomePageState extends State<HomePage> {
           itemBuilder: topicBuilder,
         ),
       ),
+      drawer: MenuPage(),
     );
   }
 }

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group</title>
+    <g id="Tablet" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.5">
+        <g id="15-Navigation" transform="translate(-83.000000, -484.000000)" stroke="#FFFFFF" stroke-width="2">
+            <g id="Icon" transform="translate(80.000000, 481.000000)">
+                <g id="Group" transform="translate(3.000000, 3.000000)">
+                    <rect id="Shape" x="1" y="1" width="42" height="42" rx="2"></rect>
+                    <line x1="9.48148148" y1="10.2777778" x2="34.2518519" y2="10.2777778" id="Line" stroke-linecap="square"></line>
+                    <rect id="Oval" x="8.63333333" y="19" width="5" height="5" rx="2.5"></rect>
+                    <rect id="Oval" x="19.6333333" y="19" width="5" height="5" rx="2.5"></rect>
+                    <rect id="Oval" x="30.6333333" y="19" width="5" height="5" rx="2.5"></rect>
+                    <rect id="Oval" x="8.63333333" y="29.9166667" width="5" height="5" rx="2.5"></rect>
+                    <rect id="Oval" x="19.6333333" y="29.9166667" width="5" height="5" rx="2.5"></rect>
+                    <rect id="Oval" x="31" y="29.9166667" width="5" height="5" rx="2.5"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

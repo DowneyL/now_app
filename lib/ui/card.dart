@@ -123,7 +123,8 @@ class SvgIconText extends StatelessWidget {
   final double iconSize;
   final Color iconColor;
   final String text;
-  final Color textColor;
+  final TextStyle textStyle;
+  final bool fillWidth;
 
   SvgIconText({
     @required this.assetName,
@@ -131,7 +132,8 @@ class SvgIconText extends StatelessWidget {
     this.space,
     this.iconSize,
     this.iconColor,
-    this.textColor,
+    this.textStyle,
+    this.fillWidth = false,
   });
 
   @override
@@ -140,6 +142,7 @@ class SvgIconText extends StatelessWidget {
 
     return SpacedRow(
       space: space ?? _defaultIconTextSpace,
+      mainAxisSize: fillWidth ? MainAxisSize.max : MainAxisSize.min,
       children: [
         SvgPicture.asset(
           assetName,
@@ -148,7 +151,7 @@ class SvgIconText extends StatelessWidget {
         ),
         Text(
           text,
-          style: theme.textTheme.bodyText2.copyWith(color: textColor),
+          style: theme.textTheme.bodyText2.merge(textStyle ?? null),
         ),
       ],
     );

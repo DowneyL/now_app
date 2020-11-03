@@ -6,6 +6,7 @@ const defaultPadding = EdgeInsets.all(0);
 
 class SpacedRow extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
+  final MainAxisSize mainAxisSize;
   final double space;
   final CrossAxisAlignment crossAxisAlignment;
   final TextDirection textDirection;
@@ -16,6 +17,7 @@ class SpacedRow extends StatelessWidget {
   SpacedRow({
     Key key,
     this.mainAxisAlignment = MainAxisAlignment.start,
+    this.mainAxisSize = MainAxisSize.min,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.textDirection,
     this.verticalDirection = VerticalDirection.down,
@@ -51,6 +53,7 @@ class SpacedRow extends StatelessWidget {
 
 class SpacedColumn extends StatelessWidget {
   final MainAxisAlignment mainAxisAlignment;
+  final MainAxisSize mainAxisSize;
   final double space;
   final CrossAxisAlignment crossAxisAlignment;
   final TextDirection textDirection;
@@ -61,6 +64,7 @@ class SpacedColumn extends StatelessWidget {
   SpacedColumn({
     Key key,
     this.mainAxisAlignment = MainAxisAlignment.start,
+    this.mainAxisSize = MainAxisSize.min,
     this.crossAxisAlignment = CrossAxisAlignment.center,
     this.textDirection,
     this.verticalDirection = VerticalDirection.down,
@@ -85,7 +89,7 @@ class SpacedColumn extends StatelessWidget {
       children: spacedChildren,
       key: key,
       mainAxisAlignment: mainAxisAlignment,
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: mainAxisSize,
       crossAxisAlignment: crossAxisAlignment,
       textDirection: textDirection,
       verticalDirection: verticalDirection,
