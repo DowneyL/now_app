@@ -1,5 +1,9 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:now_app/generated/l10n.dart';
+import 'package:now_app/theme/now_theme.dart';
+import 'package:now_app/ui/button.dart';
 
 import 'base.dart';
 import 'extension/double.dart';
@@ -33,7 +37,7 @@ class BackgroundImageCard extends StatelessWidget {
     this.titleAndFootSpace,
   });
 
-  Widget _buildFirstTopicBackground() {
+  Widget _buildBackground() {
     return Container(
       height: height,
       decoration: BoxDecoration(
@@ -45,7 +49,7 @@ class BackgroundImageCard extends StatelessWidget {
     );
   }
 
-  Widget _buildFirstTopicTitle(BuildContext context) {
+  Widget _buildTitle(BuildContext context) {
     ThemeData theme = Theme.of(context);
     TextStyle defaultTextStyle;
     if (textStyle == null) {
@@ -74,14 +78,14 @@ class BackgroundImageCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        _buildFirstTopicBackground(),
+        _buildBackground(),
         Container(
           height: height,
           child: Padding(
             padding: padding ?? defaultPadding,
             child: SpacedColumn(
               space: titleAndFootSpace ?? _defaultTitleAndFootSpace,
-              children: [_buildFirstTopicTitle(context), foot],
+              children: [_buildTitle(context), foot],
             ),
           ),
         )
@@ -383,6 +387,108 @@ class ArrowImageCard extends StatelessWidget {
         direction: _getAxis(),
         children: children,
       ),
+    );
+  }
+}
+
+class ChannelCard extends StatefulWidget {
+  final String background;
+  final String title;
+  final bool isFollow;
+  final Widget foot;
+
+  ChannelCard({
+    @required this.background,
+    this.title = '',
+    this.isFollow = false,
+    this.foot,
+  });
+
+  @override
+  _ChannelCardState createState() => _ChannelCardState();
+}
+
+class _ChannelCardState extends State<ChannelCard> {
+  bool isFollow;
+
+  @override
+  void initState() {
+    isFollow = widget.isFollow;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    S s = S.of(context);
+    ThemeData theme = Theme.of(context);
+    final Color followButtonColor = isFollow ? NowTheme.orange : Colors.white;
+    final String followButtonText = isFollow ? s.followed : s.following;
+    final Color followButtonTextColor =
+        !isFollow ? NowTheme.orange : Colors.white;
+
+    Widget _buildBackground() {
+      return Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(widget.background),
+            fit: BoxFit.cover,
+          ),
+          color: Colors.black,
+        ),
+      );
+    }
+
+    Widget _buildChannelName() {
+      return Text(
+        widget.title ?? '',
+        style: theme.textTheme.headline3.copyWith(fontSize: 32.px),
+      );
+    }
+
+    Widget _buildFollowButton() {
+      return SolidRoundedButton(
+        onPressed: () {
+          setState(() {
+            isFollow = !isFollow;
+          });
+        },
+        color: followButtonColor,
+        text: followButtonText,
+        textStyle: TextStyle(color: followButtonTextColor, fontSize: 12.px),
+        width: 26.px,
+        padding: EdgeInsets.symmetric(vertical: 12.px, horizontal: 24.px),
+      );
+    }
+
+    Widget _buildContent() {
+      return Container(
+        child: SpacedColumn(
+          space: 20.px,
+          children: [
+            _buildChannelName(),
+            _buildFollowButton(),
+          ],
+        ),
+      );
+    }
+
+    Widget _buildFoot() {
+      return Positioned(
+        bottom: 0,
+        left: 0,
+        right: 0,
+        child: widget.foot,
+      );
+    }
+
+    List<Widget> children;
+    children = widget.foot == null
+        ? [_buildBackground(), _buildContent()]
+        : [_buildBackground(), _buildContent(), _buildFoot()];
+
+    return Stack(
+      alignment: Alignment.center,
+      children: children,
     );
   }
 }

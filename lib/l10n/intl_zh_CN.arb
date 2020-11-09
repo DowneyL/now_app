@@ -19,5 +19,9 @@
   "createAccount": "创建账号",
   "needHelp": "需要帮助？",
   "registerAndContinue": "继续",
-  "termsAndCondition": "条款和条件"
+  "termsAndCondition": "条款和条件",
+  "popular": "最热",
+  "following": "关注",
+  "explore": "探索",
+  "followed": "已关注"
 }

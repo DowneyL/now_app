@@ -5,18 +5,23 @@ import 'package:now_app/ui/now_ui.dart';
 import "extension/double.dart";
 
 class SolidRoundedButton extends StatelessWidget {
+  final EdgeInsetsGeometry _defaultPadding = EdgeInsets.all(24.0.px);
+
   final double width;
   final String text;
+  final TextStyle textStyle;
   final Color color;
   final VoidCallback onPressed;
+  final EdgeInsetsGeometry padding;
 
   SolidRoundedButton({
     @required this.onPressed,
-    double width,
-    String text,
+    this.width = double.infinity,
+    this.text = "",
+    this.textStyle,
     this.color,
-  })  : width = width ?? double.infinity,
-        text = text ?? "";
+    this.padding,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +29,8 @@ class SolidRoundedButton extends StatelessWidget {
       minWidth: width,
       onPressed: onPressed,
       color: color,
-      padding: EdgeInsets.all(24.0.px),
-      child: Text(text, style: NowTheme.textTheme().button),
+      padding: padding ?? _defaultPadding,
+      child: Text(text, style: NowTheme.textTheme().button.merge(textStyle)),
       shape: StadiumBorder(),
     );
   }
@@ -34,14 +39,19 @@ class SolidRoundedButton extends StatelessWidget {
 class HollowRoundedButton extends StatelessWidget {
   final double width;
   final String text;
+  final EdgeInsetsGeometry padding;
   final VoidCallback onPressed;
+  final TextStyle textStyle;
+  final Color borderSideColor;
 
   HollowRoundedButton({
     @required this.onPressed,
-    double width,
-    String text,
-  })  : width = width ?? double.infinity,
-        text = text ?? "";
+    this.width = double.infinity,
+    this.text,
+    this.textStyle,
+    this.padding,
+    this.borderSideColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -49,11 +59,11 @@ class HollowRoundedButton extends StatelessWidget {
       minWidth: width,
       onPressed: onPressed,
       color: Colors.transparent,
-      padding: EdgeInsets.all(24.0.px),
-      child: Text(text, style: NowTheme.textTheme().button),
+      padding: padding ?? EdgeInsets.all(24.0.px),
+      child: Text(text, style: NowTheme.textTheme().button.merge(textStyle)),
       shape: StadiumBorder(
         side: BorderSide(
-          color: Color.fromRGBO(255, 255, 255, .5),
+          color: borderSideColor ?? Color.fromRGBO(255, 255, 255, .5),
         ),
       ),
     );

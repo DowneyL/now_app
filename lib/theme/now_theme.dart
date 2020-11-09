@@ -11,7 +11,7 @@ class NowTheme {
       100: Color(_primaryOrange),
       200: Color(_primaryOrange),
       300: Color(_primaryOrange),
-      400: Color(0xFFF96332),
+      400: Color(_primaryOrange),
       500: Color(_primaryOrange),
       600: Color(0xFFEB5322),
       700: Color(_primaryOrange),

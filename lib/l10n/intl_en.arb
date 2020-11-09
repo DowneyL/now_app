@@ -19,5 +19,9 @@
   "createAccount": "Create Account",
   "needHelp": "Need Help?",
   "registerAndContinue": "Continue",
-  "termsAndCondition": "Terms & Conditions"
+  "termsAndCondition": "Terms & Conditions",
+  "popular": "Popular",
+  "following": "Following",
+  "explore": "Explore",
+  "followed": "Followed"
 }
