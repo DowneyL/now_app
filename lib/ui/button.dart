@@ -71,6 +71,11 @@ class HollowRoundedButton extends StatelessWidget {
 }
 
 class BarIconButton extends StatelessWidget {
+  final double iconSize;
+  final Widget icon;
+  final VoidCallback onPressed;
+  final EdgeInsetsGeometry padding;
+
   BarIconButton({
     Key key,
     this.iconSize = 26.0,
@@ -87,11 +92,6 @@ class BarIconButton extends StatelessWidget {
     this.padding = const EdgeInsets.all(14.0),
   })  : icon = SvgPicture.asset(assetName),
         super(key: key);
-
-  final double iconSize;
-  final Widget icon;
-  final VoidCallback onPressed;
-  final EdgeInsetsGeometry padding;
 
   @override
   Widget build(BuildContext context) {

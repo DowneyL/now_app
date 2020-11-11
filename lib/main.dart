@@ -20,7 +20,7 @@ class NowApp extends StatelessWidget {
   Widget build(BuildContext context) {
     Window.init();
     return MaterialApp(
-      locale: Locale.fromSubtags(languageCode: "en"),
+      locale: null,
       // locale: Locale.fromSubtags(languageCode: "zh", countryCode: "CN"),
       theme: NowTheme.light(),
       darkTheme: NowTheme.dark(),

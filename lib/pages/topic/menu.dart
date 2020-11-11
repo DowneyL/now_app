@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:now_app/generated/l10n.dart';
 import 'package:now_app/models/menus.dart';
 import 'package:now_app/providers/menu.dart';
+import 'package:now_app/routes.dart';
 import 'package:now_app/ui/now_ui.dart';
 import 'package:provider/provider.dart';
 
 class MenuPage extends StatelessWidget {
+  final bool isRoot;
+
   final List<MenusModel> menus;
 
-  MenuPage({@required this.menus});
+  MenuPage({@required this.menus, this.isRoot = false});
 
   static const String avatarUrl =
       "http://himg.bdimg.com/sys/portrait/item/0660e585abe69c88e7acace4ba94e5a4a9913d.jpg";
@@ -27,6 +30,10 @@ class MenuPage extends StatelessWidget {
         padding: EdgeInsets.all(0),
         onPressed: () {
           navigator.pop(context);
+          if (!isRoot) {
+            navigator.push(Routers.fadePageRouteBuilder(
+                navigator.widget.initialRoute, null));
+          }
           menuProvider.index = index;
         },
         child: Padding(

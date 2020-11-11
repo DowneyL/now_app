@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:now_app/generated/l10n.dart';
 import 'package:now_app/theme/now_theme.dart';
 import 'package:now_app/ui/button.dart';
+import 'package:now_app/ui/now_ui.dart';
 
 import 'base.dart';
 import 'extension/double.dart';
@@ -207,7 +208,7 @@ class CustomUnderlineText extends StatelessWidget {
 }
 
 class ArrowImageCard extends StatelessWidget {
-  static double defaultArrowSize = 18.0.px;
+  static double _defaultArrowSize = 18.0.px;
 
   final double height;
   final double width;
@@ -223,6 +224,34 @@ class ArrowImageCard extends StatelessWidget {
 
   ArrowImageCard({
     @required this.direction,
+    @required this.title,
+    this.titlePadding,
+    this.textStyle,
+    this.height,
+    this.width,
+    @required this.image,
+    this.arrowSize,
+    this.backgroundColor,
+    this.infoCardPadding,
+    this.foot,
+  });
+
+  ArrowImageCard.up({
+    this.direction = ArrowDirection.up,
+    @required this.title,
+    this.titlePadding,
+    this.textStyle,
+    this.height,
+    this.width,
+    @required this.image,
+    this.arrowSize,
+    this.backgroundColor,
+    this.infoCardPadding,
+    this.foot,
+  });
+
+  ArrowImageCard.down({
+    this.direction = ArrowDirection.down,
     @required this.title,
     this.titlePadding,
     this.textStyle,
@@ -255,8 +284,8 @@ class ArrowImageCard extends StatelessWidget {
 
     return SvgPicture.asset(
       assetName,
-      width: arrowSize ?? defaultArrowSize,
-      height: arrowSize ?? defaultArrowSize,
+      width: arrowSize ?? _defaultArrowSize,
+      height: arrowSize ?? _defaultArrowSize,
     );
   }
 
