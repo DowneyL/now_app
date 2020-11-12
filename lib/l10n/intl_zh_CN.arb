@@ -23,5 +23,11 @@
   "popular": "最热",
   "following": "关注",
   "explore": "探索",
-  "followed": "已关注"
+  "followed": "已关注",
+  "week": "每周",
+  "month": "每月",
+  "year": "每年",
+  "theMost": "你最喜欢看什么?",
+  "articles": "文章数量",
+  "followers": "关注人数"
 }

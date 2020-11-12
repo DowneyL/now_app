@@ -14,3 +14,4 @@ export "extension/double.dart";
 export "extension/int.dart";
 export "input.dart";
 export "screen.dart";
+export 'swipe.dart';

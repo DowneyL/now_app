@@ -23,5 +23,11 @@
   "popular": "Popular",
   "following": "Following",
   "explore": "Explore",
-  "followed": "Followed"
+  "followed": "Followed",
+  "week": "week",
+  "month": "month",
+  "year": "year",
+  "theMost": "What you are reading the most?",
+  "articles": "Articles",
+  "followers": "Followers"
 }

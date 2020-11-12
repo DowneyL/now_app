@@ -21,6 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "articles" : MessageLookupByLibrary.simpleMessage("文章数量"),
     "bookmarks" : MessageLookupByLibrary.simpleMessage("书签"),
     "calendar" : MessageLookupByLibrary.simpleMessage("我的日历"),
     "channels" : MessageLookupByLibrary.simpleMessage("频道"),
@@ -29,9 +30,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "email" : MessageLookupByLibrary.simpleMessage("邮箱"),
     "explore" : MessageLookupByLibrary.simpleMessage("探索"),
     "followed" : MessageLookupByLibrary.simpleMessage("已关注"),
+    "followers" : MessageLookupByLibrary.simpleMessage("关注人数"),
     "following" : MessageLookupByLibrary.simpleMessage("关注"),
     "login" : MessageLookupByLibrary.simpleMessage("登录"),
     "logout" : MessageLookupByLibrary.simpleMessage("退出登录"),
+    "month" : MessageLookupByLibrary.simpleMessage("每月"),
     "needHelp" : MessageLookupByLibrary.simpleMessage("需要帮助？"),
     "newest" : MessageLookupByLibrary.simpleMessage("最新"),
     "overview" : MessageLookupByLibrary.simpleMessage("概览"),
@@ -41,9 +44,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerAndContinue" : MessageLookupByLibrary.simpleMessage("继续"),
     "setting" : MessageLookupByLibrary.simpleMessage("设置"),
     "termsAndCondition" : MessageLookupByLibrary.simpleMessage("条款和条件"),
+    "theMost" : MessageLookupByLibrary.simpleMessage("你最喜欢看什么?"),
     "timeline" : MessageLookupByLibrary.simpleMessage("时间线"),
     "title" : MessageLookupByLibrary.simpleMessage("Meet Now"),
     "username" : MessageLookupByLibrary.simpleMessage("用户名"),
-    "widget" : MessageLookupByLibrary.simpleMessage("小组件")
+    "week" : MessageLookupByLibrary.simpleMessage("每周"),
+    "widget" : MessageLookupByLibrary.simpleMessage("小组件"),
+    "year" : MessageLookupByLibrary.simpleMessage("每年")
   };
 }

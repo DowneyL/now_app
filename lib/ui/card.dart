@@ -34,7 +34,7 @@ class BackgroundImageCard extends StatelessWidget {
     this.textStyle,
     this.padding,
     this.height,
-    this.foot,
+    @required this.foot,
     this.titleAndFootSpace,
   });
 
@@ -423,14 +423,22 @@ class ArrowImageCard extends StatelessWidget {
 class ChannelCard extends StatefulWidget {
   final String background;
   final String title;
+  final TextStyle style;
   final bool isFollow;
+  final bool isShowFollow;
   final Widget foot;
+  final Alignment alignment;
+  final EdgeInsetsGeometry padding;
 
   ChannelCard({
     @required this.background,
     this.title = '',
+    this.style,
     this.isFollow = false,
+    this.isShowFollow = true,
     this.foot,
+    this.alignment,
+    this.padding,
   });
 
   @override
@@ -470,7 +478,10 @@ class _ChannelCardState extends State<ChannelCard> {
     Widget _buildChannelName() {
       return Text(
         widget.title ?? '',
-        style: theme.textTheme.headline3.copyWith(fontSize: 32.px),
+        style: widget.style ??
+            theme.textTheme.headline3.copyWith(
+              fontSize: 32.px,
+            ),
       );
     }
 
@@ -491,11 +502,12 @@ class _ChannelCardState extends State<ChannelCard> {
 
     Widget _buildContent() {
       return Container(
+        padding: widget.padding ?? defaultPadding,
         child: SpacedColumn(
           space: 20.px,
           children: [
             _buildChannelName(),
-            _buildFollowButton(),
+            if (widget.isShowFollow) _buildFollowButton(),
           ],
         ),
       );
@@ -516,7 +528,7 @@ class _ChannelCardState extends State<ChannelCard> {
         : [_buildBackground(), _buildContent(), _buildFoot()];
 
     return Stack(
-      alignment: Alignment.center,
+      alignment: widget.alignment ?? Alignment.center,
       children: children,
     );
   }

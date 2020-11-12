@@ -5,7 +5,7 @@ const String channelsJson = '''
     {
         "channel":"Science",
         "cover_image":"assets/images/cb1.png",
-        "follows":"234k",
+        "followers_count":"234k",
         "head_followers":[
             {
                 "name": "August5th",
@@ -32,7 +32,7 @@ const String channelsJson = '''
     {
         "channel":"Fashion",
         "cover_image":"assets/images/cb2.png",
-        "follows":"145k",
+        "followers_count":"145k",
         "head_followers":[
             {
                 "name": "Eugust5th",
@@ -59,7 +59,7 @@ const String channelsJson = '''
     {
         "channel":"Tehnology",
         "cover_image":"assets/images/cb3.png",
-        "follows":"289k",
+        "followers_count":"289k",
         "head_followers":[
             {
                 "name": "AWugust5th",
@@ -86,7 +86,7 @@ const String channelsJson = '''
     {
         "channel":"Enviroment",
         "cover_image":"assets/images/cb4.png",
-        "follows":"678k",
+        "followers_count":"678k",
         "head_followers":[
             {
                 "name": "Ougust5th",
@@ -113,7 +113,7 @@ const String channelsJson = '''
     {
         "channel":"Finance",
         "cover_image":"assets/images/cb2.png",
-        "follows":"331k",
+        "followers_count":"331k",
         "head_followers":[
             {
                 "name": "Jett",
@@ -140,7 +140,7 @@ const String channelsJson = '''
     {
         "channel":"Nature",
         "cover_image":"assets/images/cb1.png",
-        "follows":"278k",
+        "followers_count":"278k",
         "head_followers":[
             {
                 "name": "Cugust5th",
@@ -170,20 +170,20 @@ const String channelsJson = '''
 class ChannelModel {
   String channel;
   String coverImage;
-  String follows;
+  String followersCount;
   List<UserModel> headFollowers;
 
   ChannelModel(
     this.channel,
     this.coverImage,
-    this.follows,
+    this.followersCount,
     this.headFollowers,
   );
 
   ChannelModel.fromJson(Map<String, dynamic> data) {
     channel = data['channel'];
     coverImage = data['cover_image'];
-    follows = data['follows'];
+    followersCount = data['followers_count'];
     List<dynamic> hf = data["head_followers"];
     headFollowers = hf.map((e) => UserModel.fromJson(e)).toList();
   }

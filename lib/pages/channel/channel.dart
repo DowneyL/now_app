@@ -14,47 +14,11 @@ class ChannelPage extends StatefulWidget {
 }
 
 class _ChannelPageState extends State<ChannelPage> {
-  int selectedButtonIndex = 0;
   @override
   Widget build(BuildContext context) {
     final S s = S.of(context);
     final NavigatorState navigator = Navigator.of(context);
     List<String> buttons = [s.following, s.popular, s.explore];
-
-    Widget _buildEachButton(int index) {
-      Color borderSideColor;
-      bool isSelected = (index == selectedButtonIndex);
-      TextStyle textStyle = TextStyle(
-        fontSize: 12.px,
-        fontWeight: FontWeight.w600,
-      );
-      if (!isSelected) {
-        textStyle = textStyle.copyWith(color: Colors.white.withOpacity(.6));
-        borderSideColor = Colors.transparent;
-      }
-      return HollowRoundedButton(
-        onPressed: () {
-          setState(() {
-            selectedButtonIndex = index;
-          });
-        },
-        width: 60.px,
-        text: buttons[index],
-        textStyle: textStyle,
-        padding: EdgeInsets.symmetric(
-          horizontal: 26.px,
-          vertical: 12.px,
-        ),
-        borderSideColor: borderSideColor,
-      );
-    }
-
-    Widget _buildHeaderButtons() {
-      return SpacedRow(
-        space: 32.0.px,
-        children: buttons.asMap().keys.map(_buildEachButton).toList(),
-      );
-    }
 
     Widget _buildHeader() {
       return Container(
@@ -62,7 +26,7 @@ class _ChannelPageState extends State<ChannelPage> {
         width: double.infinity,
         alignment: Alignment.center,
         color: NowTheme.orange.shade600,
-        child: _buildHeaderButtons(),
+        child: HollowRoundedButtonGroup(buttons: buttons),
       );
     }
 
@@ -88,7 +52,7 @@ class _ChannelPageState extends State<ChannelPage> {
                     Material(
                       type: MaterialType.transparency,
                       child: Text(
-                        "${e.follows} Followers",
+                        "${e.followersCount} Followers",
                         style: TextStyle(
                           fontWeight: FontWeight.w600,
                         ),

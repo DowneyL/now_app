@@ -21,6 +21,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "articles" : MessageLookupByLibrary.simpleMessage("Articles"),
     "bookmarks" : MessageLookupByLibrary.simpleMessage("bookmarks"),
     "calendar" : MessageLookupByLibrary.simpleMessage("calendar"),
     "channels" : MessageLookupByLibrary.simpleMessage("channels"),
@@ -29,9 +30,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "email" : MessageLookupByLibrary.simpleMessage("Email"),
     "explore" : MessageLookupByLibrary.simpleMessage("Explore"),
     "followed" : MessageLookupByLibrary.simpleMessage("Followed"),
+    "followers" : MessageLookupByLibrary.simpleMessage("Followers"),
     "following" : MessageLookupByLibrary.simpleMessage("Following"),
     "login" : MessageLookupByLibrary.simpleMessage("log in"),
     "logout" : MessageLookupByLibrary.simpleMessage("log out"),
+    "month" : MessageLookupByLibrary.simpleMessage("month"),
     "needHelp" : MessageLookupByLibrary.simpleMessage("Need Help?"),
     "newest" : MessageLookupByLibrary.simpleMessage("new"),
     "overview" : MessageLookupByLibrary.simpleMessage("overview"),
@@ -41,9 +44,12 @@ class MessageLookup extends MessageLookupByLibrary {
     "registerAndContinue" : MessageLookupByLibrary.simpleMessage("Continue"),
     "setting" : MessageLookupByLibrary.simpleMessage("setting"),
     "termsAndCondition" : MessageLookupByLibrary.simpleMessage("Terms & Conditions"),
+    "theMost" : MessageLookupByLibrary.simpleMessage("What you are reading the most?"),
     "timeline" : MessageLookupByLibrary.simpleMessage("timeline"),
     "title" : MessageLookupByLibrary.simpleMessage("Meet Now"),
     "username" : MessageLookupByLibrary.simpleMessage("Username"),
-    "widget" : MessageLookupByLibrary.simpleMessage("widget")
+    "week" : MessageLookupByLibrary.simpleMessage("week"),
+    "widget" : MessageLookupByLibrary.simpleMessage("widget"),
+    "year" : MessageLookupByLibrary.simpleMessage("year")
   };
 }

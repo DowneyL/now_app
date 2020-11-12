@@ -41,7 +41,7 @@ class ChannelHomePage extends StatelessWidget {
                   Material(
                     type: MaterialType.transparency,
                     child: Text(
-                      "${arguments.follows} Followers",
+                      "${arguments.followersCount} Followers",
                       style: TextStyle(
                         fontSize: 12.px,
                         fontWeight: FontWeight.w600,
